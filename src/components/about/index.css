@@ -1,0 +1,35 @@
+*,
+::before,
+::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#about_img {
+    height: 24rem;
+    position: relative;
+    border: 2px solid #F57328;
+    filter: grayscale(1);
+}
+
+#about_img>img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    position: absolute;
+    top: -5%;
+    left: -10%;
+    object-fit: cover;
+    object-position: center;
+}
+
+#about_img:hover {
+    transition: all 0.5s ease;
+    filter: grayscale(0);
+}
+
+#about_img:hover img {
+    top: 0;
+    left: 0;
+}
