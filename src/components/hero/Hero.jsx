@@ -1,11 +1,12 @@
 import React,{useEffect} from 'react';
-import {motion} from 'framer-motion'
+import {motion} from 'framer-motion';
+import { useGlobalContext } from '../../context/context';
 import './index.css';
 
 const Hero = () => {
-  const themeColor = '#0F3460';
-  const myName = 'yawai';
-  const nameArr = myName.split('');
+    const {darkTheme,setDarkTheme,themeColor} = useGlobalContext();
+    const myName = 'yawai';
+    const nameArr = myName.split('');
 
   useEffect(()=>{
     document.getElementById('name').addEventListener('mousemove',e=>{
@@ -14,7 +15,7 @@ const Hero = () => {
   },[])
   return (
     <section id='home' 
-    className="w-full h-full flex justfiy-center items-center min-h-screen">
+    className="snap-always snap-start w-full h-full flex justfiy-center items-center min-h-screen relative">
 
             <div className='w-10/12 m-auto h-full md:w-5/12 flex justify-center flex-col items-center p-2 text-center'>
                 <h1 id='name_container' className='text-5xl mb-2'>Hi! I am 
@@ -48,7 +49,9 @@ const Hero = () => {
                         letterSpacing:'1px',
                       transform:'rotateX(90deg)'
                     }}
-                     key={ind} className='text-transparent uppercase inline-block cursor-pointer relative' data-text={word}>{word}</motion.span>
+                     key={ind} className='text-transparent uppercase inline-block cursor-pointer relative' data-text={word}
+                     data-color={themeColor}
+                     >{word}</motion.span>
                   ))
                 }
                 </strong>
@@ -62,7 +65,9 @@ const Hero = () => {
                 }}
                 >Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolorum, eius?</motion.p>
 
-                <a href=""></a>
+                <a href="#contact" type='button' style={{
+                    backgroundColor:themeColor
+                }} className='p-2 rounded text-white hover:bg-blue-800'>Contact Me</a>
             </div>
 
             <motion.div className='hidden md:block w-7/12 h-screen'
@@ -82,7 +87,7 @@ const Hero = () => {
                     {/* sun or moon */}
                     <path id="Vector"
                         d="M360.344 119.762C371.327 119.762 380.23 112.68 380.23 103.944C380.23 95.2088 371.327 88.1272 360.344 88.1272C349.361 88.1272 340.458 95.2088 340.458 103.944C340.458 112.68 349.361 119.762 360.344 119.762Z"
-                        fill="#fffd37" />
+                        fill={darkTheme ? '#dcdcdc':'#fffd37'} />
                     <path id="Vector_2"
                         d="M482.381 345.122C511.939 327.215 526.057 297.124 517.219 268.418C516.999 267.705 516.767 266.994 516.523 266.284C510.664 249.244 496.167 233.05 475.04 227.606C457.299 223.034 437.935 226.55 419.428 224.732C383.097 221.163 354.931 197.781 335.112 173.301C315.293 148.82 300.062 121.417 273.727 101.192C230.318 67.8555 159.507 60.678 105.687 82.3779C51.8661 104.078 17.5829 152.221 19.045 200.202C20.5071 248.182 56.318 294.055 108.324 318.394C127.429 327.334 149.526 333.668 171.517 331.452C190.598 329.529 207.935 321.374 226.927 318.953C256.785 315.146 286.454 325.884 312.279 338.397C338.105 350.91 363.05 365.742 392.397 371.543C420.893 377.176 456.197 360.986 482.381 345.122Z"
                         fill={themeColor} />

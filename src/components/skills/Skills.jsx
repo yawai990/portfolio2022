@@ -1,11 +1,13 @@
 import React from 'react';
 import { skillImg } from '../../data';
 import {motion} from 'framer-motion';
+import { useGlobalContext } from '../../context/context';
 import './index.css';
 
 const Skills = () => {
+    const {themeColor} = useGlobalContext();
   return (
-        <div id="skills" className="w-full">
+        <div id="skills" className="snap-always snap-start w-full dark:text-slate-500">
 
             <div className='p-2'>
 
@@ -13,7 +15,11 @@ const Skills = () => {
             </div>
 
                 <div className="w-full">
-                    <div className="w-full h-44 bg-[#F2D388] flex justify-center items-center p-4">
+                    <div 
+                    style={{
+                        color:themeColor
+                    }}
+                     className="w-full h-44 flex justify-center items-center p-4 bg-bg-primary dark:bg-[#191919]">
                         <p className='w-11/12 md:w-2/5 text-lg text-center tracking-wide p-2'>Passionate about crafting the deligtful and functional experiences and focused on writing clean and efficient code</p>
                     </div>
 
@@ -35,7 +41,7 @@ const Skills = () => {
                                 }}
                                 className="w-28 h-28 rounded-full drop-shadow-lg cursor-pointer"
                                 >
-                                    <div  id='skill_img_container' className='w-full h-full flex justify-center items-center bg-white p-2' >
+                                    <div  id='skill_img_container' className='w-full h-full flex justify-center items-center bg-white dark:bg-[#19282F] p-2' >
                                     <img id='skill_img' style={{
                                         width:'90%',
                                         height:'90%'

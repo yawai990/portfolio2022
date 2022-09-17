@@ -3,9 +3,11 @@ import {FaQuoteLeft,FaQuoteRight} from 'react-icons/fa';
 import {BiRightArrow} from 'react-icons/bi';
 import {motion } from 'framer-motion';
 import './index.css';
+import { useGlobalContext } from '../../context/context';
 import { AboutData } from '../../data';
 
 const About = () => {
+  const {themeColor}= useGlobalContext();
   const [currentYear,setCurrentYear]  = useState(0);
   const [progressWidth,setProgressWidth] = useState(0);
   const aboutHead = 'About Me';
@@ -20,7 +22,7 @@ const About = () => {
   }
 
   return (
-    <section id='about' className='w-full p-3'>
+    <section id='about' className='snap-always snap-start w-full p-1 dark:text-slate-500'>
 
       <div className="header p-2">
         <h2 id='header' className='text-3xl tracking-wide font-semibold'
@@ -50,7 +52,7 @@ const About = () => {
 
       </div>
         <motion.p
-         className='text-4xl text-center mt-4 pl-3 text-text-sidebg'
+         className='text-2xl text-center mt-4 pl-3 text-text-sidebg'
          whileInView={{
           opacity:[0,1],
           y:[20,0]
@@ -60,25 +62,17 @@ const About = () => {
           duration:0.5
          }}
          >
-          <FaQuoteLeft className='ml-5 italic text-bg-primary' />
+          <FaQuoteLeft style={{
+            color:themeColor
+          }} className='ml-5 italic' />
         </motion.p>
       
       <div className='flex flex-col md:flex-row'>
       <div className='w-full md:w-3/5'>
-            <div className='w-full h-full flex-col flex justify-center'>
 
-              <motion.div className="w-2/5 self-center mb-5"
-              whileInView={{
-                y:[70,0],
-                opacity:[0,1]
-              }}
-              >
-                        <h1 className='font-semibold text-4xl font-sans tracking-wide'>Yawai</h1>
-                        <h1 className='font-semibold text-4xl font-san-serif ml-4 tracking-wide text-end'>Aung</h1>
-              </motion.div>
+            <div className='p-6'>
 
-        
-        <motion.p className='w-full p-2 mb-5 md:mb-0 md:p-0 md:w-96 ml-auto'
+        <motion.p className='w-full mb-5 md:mb-0 md:p-0 ml-auto'
                  whileInView={{
                   y:[100,0],
                   opacity:[0,1]
@@ -87,12 +81,77 @@ const About = () => {
                   delay:0.9
                 }}
         >Lorem ipsum dolor sit amet consectetur adipisicing elit. Id delectus vero quod aperiam odio ratione quia ipsum aspernatur quidem debitis.</motion.p>
+
+                
+        <div className="w-full mb-5 md:mb-0 md:p-0 ml-auto mt-2">
+
+                          <div className="flex gap-1 flex-wrap relative">
+                            {AboutData.map(about=>(
+                              <motion.div
+                              onClick={()=>setMode(about.year,about.id)}
+                              style={{
+                                filter:currentYear !== about.year ? 'grayscale(1)':'grayscale(0)'
+                              }}
+                              key={about.id} 
+                              className='w-full md:w-44 p-2 rounded-md mb-4 cursor-pointer'
+                              whileInView={{
+                                y:[100,0],
+                                opacity:[0,1]
+                              }}
+                              transition={{
+                                delay:0.08 * about.id,
+                                
+                              }}
+                              >
+          <h5 style={{
+            color:currentYear !== about.year ? '':'#5CB8E4'
+          }} className='font-bold text-lg tracking-wider'>{about.year}</h5>
+          <div>
+            {about.desc.map((exp,ind)=>(
+              <div key={ind} className='flex mt-3 justify-start items-center gap-1 bg-[#16213E]  rounded-lg text-[#ABD9FF] p-2'>
+                <span style={{
+                  fontSize:'12px'
+                }} className='bg-blue-400 p-1 text-white rounded-lg 
+                flex justify-center items-center'
+                >  <BiRightArrow /> </span>
+                <span style={{
+                  fontSize:'12px',
+                  marginTop:'8px'
+                }}>{exp}</span>
+              </div>
+            ))}
+          </div>
+    </motion.div>
+  ))}
+
+                    <motion.div className="progress-container absolute bottom-0 left-0 md:w-full md:h-1 w-1 h-full bg-gray-300 dark:bg-slate-600 rounded-lg overflow-hidden"
+                    whileInView={{
+                    opacity:[0,1],
+                    x:[-100,0]
+                    }}
+                    transition={{
+                    delay:0.8,
+                    duration:0.5
+                    }}
+                    >
+                    <div style={{
+                    width:`${progressWidth}%`,
+                    transition:'all 0.3s linear',
+                    backgroundColor:themeColor
+                    }} className="progress-bar md:h-full absolute"></div>
+                    </motion.div>
+                    </div>
+
+                    </div>
+
         </div>
       </div>
 
-        <div className='w-full md:w-2/5 py-4 flex justify-center items-center overflow-hidden'>
+        <div className='w-full md:w-2/5 py-3 flex justify-center items-center overflow-hidden'>
       <motion.div 
-      id="about_img" className='w-72 rounded-lg'
+      id="about_img"
+      data-theme-color={themeColor}
+       className='w-72 rounded-lg'
       initial={{ 
         scale: 0,
         opacity:0 
@@ -113,71 +172,9 @@ const About = () => {
         </div>
         </div>
 
-        <div className="container w-4/5 m-auto mt-4 p-2">
-
-              <div className="flex gap-1 flex-wrap relative">
-                {AboutData.map(about=>(
-                  <motion.div
-                  onClick={()=>setMode(about.year,about.id)}
-                  style={{
-                    filter:currentYear !== about.year ? 'grayscale(1)':'grayscale(0)'
-                  }}
-                  key={about.id} 
-                  className='w-full md:w-44 p-2 rounded-md mb-4 cursor-pointer'
-                  whileInView={{
-                    y:[100,0],
-                    opacity:[0,1]
-                  }}
-                  transition={{
-                    delay:0.08 * about.id,
-                    
-                  }}
-                  >
-                        <h5 style={{
-                          color:currentYear !== about.year ? '':'#5CB8E4'
-                        }} className='font-bold text-lg tracking-wider'>{about.year}</h5>
-                        <div>
-                          {about.desc.map((exp,ind)=>(
-                            <div key={ind} className='flex mt-3 justify-start items-center gap-1 bg-[#16213E]  rounded-lg text-[#ABD9FF] p-2'>
-                              <span style={{
-                                fontSize:'12px'
-                              }} className='bg-blue-400 p-1 text-white rounded-lg 
-                              flex justify-center items-center'
-                              >  <BiRightArrow /> </span>
-                              <span style={{
-                                fontSize:'12px',
-                                marginTop:'8px'
-                              }}>{exp}</span>
-                            </div>
-                          ))}
-                        </div>
-                  </motion.div>
-                ))}
-              
-              <motion.div className="progress-container absolute bottom-0 left-0 md:w-full md:h-1 w-1 h-full bg-gray-300 rounded-lg overflow-hidden"
-          whileInView={{
-            opacity:[0,1],
-            x:[-100,0]
-          }}
-          transition={{
-            delay:0.8,
-            duration:0.5
-          }}
-          >
-            <div style={{
-              width:`${progressWidth}%`,
-              transition:'all 0.3s linear'
-            }} className="progress-bar md:h-full absolute bg-blue-500"></div>
-          </motion.div>
-
-
-              </div>
-
-     </div>
-
-      <div className="flex justify-end items-center mb-5 p-2">
+      <div className="flex justify-end items-center mb-2 p-2">
         <motion.p 
-        className='text-4xl mt-4 pl-3 text-text-sidebg'
+        className='text-2xl mt-2 pl-3 text-text-sidebg'
         whileInView={{
           opacity:[0,1],
           y:[20,0]
@@ -187,7 +184,9 @@ const About = () => {
           duration:0.5
          }}
         >
-          <FaQuoteRight className='ml-5 italic text-bg-primary' />
+          <FaQuoteRight style={{
+            color:themeColor
+          }} className='ml-5 italic' />
         </motion.p>
       </div>
 

@@ -23,9 +23,31 @@
     top: 0;
     transform: scale(0);
     left: 0;
-    color: red;
     opacity: 0;
     transition: all 0.2s ease-out;
+}
+#name_word[data-color='#F76E11']::before {
+    color: #F76E11;
+}
+
+#name_word[data-color='#6F38C5']::before {
+    color: #6F38C5;
+}
+
+#name_word[data-color='#FFB200']::before {
+    color: #FFB200;
+}
+
+#name_word[data-color='#1CD6CE']::before {
+    color: #1CD6CE;
+}
+
+#name_word[data-color='#B33030']::before {
+    color: #B33030;
+}
+
+#name_word[data-color='#E60965']::before {
+    color: #E60965;
 }
 
 @keyframes shake {

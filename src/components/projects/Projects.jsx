@@ -44,7 +44,7 @@ const Projects = () => {
   }
 
   return (
-    <div id="projects" className="w-full">
+    <div id="projects" className="snap-always snap-start w-full dark:text-slate-500">
 
             <div className="p-2 mb-4">
               <h4 className="text-2xl font-semibold">Projects</h4>

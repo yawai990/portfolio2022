@@ -9,8 +9,30 @@
 #about_img {
     height: 24rem;
     position: relative;
-    border: 2px solid #F57328;
     filter: grayscale(1);
+}
+#about_img[data-theme-color='#F76E11'] {
+    border: 2px solid #F76E11;
+}
+
+#about_img[data-theme-color='#6F38C5'] {
+    border: 2px solid #6F38C5;
+}
+
+#about_img[data-theme-color='#FFB200'] {
+    border: 2px solid #FFB200;
+}
+
+#about_img[data-theme-color='#1CD6CE'] {
+    border: 2px solid #1CD6CE;
+}
+
+#about_img[data-theme-color='#B33030'] {
+    border: 2px solid #B33030;
+}
+
+#about_img[data-theme-color='#E60965'] {
+    border: 2px solid #E60965;
 }
 
 #about_img>img {
