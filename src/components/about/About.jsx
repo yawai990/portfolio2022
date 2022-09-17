@@ -52,7 +52,8 @@ const About = () => {
         <motion.p
          className='text-4xl text-center mt-4 pl-3 text-text-sidebg'
          whileInView={{
-          opacity:[0,1]
+          opacity:[0,1],
+          y:[20,0]
          }}
          transiotion={{
           delay:2,
@@ -62,8 +63,8 @@ const About = () => {
           <FaQuoteLeft className='ml-5 italic text-bg-primary' />
         </motion.p>
       
-      <div className='flex'>
-      <div className='w-3/5'>
+      <div className='flex flex-col md:flex-row'>
+      <div className='w-full md:w-3/5'>
             <div className='w-full h-full flex-col flex justify-center'>
 
               <motion.div className="w-2/5 self-center mb-5"
@@ -72,13 +73,12 @@ const About = () => {
                 opacity:[0,1]
               }}
               >
-
                         <h1 className='font-semibold text-4xl font-sans tracking-wide'>Yawai</h1>
                         <h1 className='font-semibold text-4xl font-san-serif ml-4 tracking-wide text-end'>Aung</h1>
               </motion.div>
 
         
-        <motion.p className='w-96 ml-auto'
+        <motion.p className='w-full p-2 mb-5 md:mb-0 md:p-0 md:w-96 ml-auto'
                  whileInView={{
                   y:[100,0],
                   opacity:[0,1]
@@ -90,7 +90,7 @@ const About = () => {
         </div>
       </div>
 
-        <div className='w-2/5 flex justify-center items-center'>
+        <div className='w-full md:w-2/5 py-4 flex justify-center items-center overflow-hidden'>
       <motion.div 
       id="about_img" className='w-72 rounded-lg'
       initial={{ 
@@ -175,19 +175,21 @@ const About = () => {
 
      </div>
 
-      <motion.div className="flex justify-end items-center mb-5 p-2"
-          whileInView={{
-            opacity:[0,1],
-           }}
-           transiotion={{
-            delay:2,
-            duration:0.5
-           }}
-      >
-        <p className='text-4xl mt-4 pl-3 text-text-sidebg'>
+      <div className="flex justify-end items-center mb-5 p-2">
+        <motion.p 
+        className='text-4xl mt-4 pl-3 text-text-sidebg'
+        whileInView={{
+          opacity:[0,1],
+          y:[20,0]
+         }}
+         transiotion={{
+          delay:2,
+          duration:0.5
+         }}
+        >
           <FaQuoteRight className='ml-5 italic text-bg-primary' />
-        </p>
-      </motion.div>
+        </motion.p>
+      </div>
 
     </section>
   )

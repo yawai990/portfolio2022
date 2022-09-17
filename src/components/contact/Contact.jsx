@@ -9,12 +9,12 @@ const Contact = () => {
 
             <div className="w-full h-52 bg-[#F2D388] text-[#874C62] flex justify-center items-center flex-col gap-4">
               <p className="text-center text-4xl">LET'S MAKE SOMETHING TOGETHER</p>
-              <p className='text-lg'>Give Me a heads up if you're interested for an interview</p>
+              <p className='text-lg text-center'>Give Me a heads up if you're interested for an interview</p>
             </div>
 
             <div className='mt-5'>
             
-              <h3 whileInView={{opacity:1}} className='text-center text-4xl'>
+              <h3 className='text-center text-4xl'>
                Get In Tounch
               </h3>
         
@@ -22,25 +22,28 @@ const Contact = () => {
 
               <form action="" className='p-4'>
 
-                      <div className="flex justify-between items-center flex-col md:flex-row gap-4 md:gap-0">
+                      <div className="gird grid-cols-3 md:flex gap-3">
                             
                               <motion.input 
                               type="text" name='name' 
-                              id='name' className='w-full md:w-80 outline-none border focus:border-[#5F6F94] p-2 rounded-lg' 
+                              id='name' 
+                              className='w-full md:flex-1 outline-none border focus:border-[#5F6F94] p-2 rounded-lg mb-2 sm:mb-0' 
                               placeholder='Your Name'
                               whileInView={{y:[100,0],opacity:[0,1]}}
                                />
                               <motion.input 
                               type="text" name='email' 
-                              id='email' className='w-full md:w-80 outline-none border focus:border-[#5F6F94] p-2 rounded-lg' 
+                              id='email' 
+                              className='w-full md:flex-1 outline-none border focus:border-[#5F6F94] p-2 rounded-lg my-2 md:my-0' 
                               placeholder='Your Email'
                               whileInView={{y:[100,0],opacity:[0,1],transition:{
                                 delay:0.2
                               }}}
                                />
                               <motion.input
-                               type="text" name='phone' 
-                               id='phone' className='w-full md:w-80 outline-none border focus:border-[#5F6F94] p-2 rounded-lg' 
+                               type="text" 
+                               name='phone' 
+                               id='phone' className='w-full md:flex-1 outline-none border focus:border-[#5F6F94] p-2 rounded-lg' 
                                placeholder='Your Phone' 
                                whileInView={{y:[100,0],opacity:[0,1],transition:{
                                 delay:0.4
@@ -49,9 +52,7 @@ const Contact = () => {
                       </div>
 
                       <motion.div className='my-4'
-                      whileInView={{y:[100,0],opacity:[0,1],transition:{
-                        delay:0.6
-                      }}}
+                           whileInView={{y:[100,0],opacity:[0,1]}}
                       >
                         <textarea name="message" 
                         id="message" rows="5"
