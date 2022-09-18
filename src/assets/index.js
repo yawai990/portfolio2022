@@ -10,3 +10,4 @@ export {default as bootstrap} from './images/bootstrap.svg';
 export {default as express} from './images/express.svg';
 export {default as tailwind} from './images/tailwind.svg';
 export {default as programmer} from './images/programmer.svg';
+export {default as logo} from './images/yawai.svg';
