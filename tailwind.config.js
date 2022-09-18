@@ -7,7 +7,7 @@ module.exports = {
     theme: {
       extend: {
         backgroundColor:{
-          'bg-primary':"#A7D2CB",
+          'bg-primary':"#182747",
           'dark-bg':'#0e1114'
         },
         textColor:{
@@ -19,6 +19,10 @@ module.exports = {
         },
         fontFamily:{
           'sans':['Merriweather',]
+        },
+        dropShadow:{
+          'light':'2px 0 8px #5151519e',
+          '3xl': '0 35px 15px rgba(0, 0, 0, 0.25)'
         }
       },
     },

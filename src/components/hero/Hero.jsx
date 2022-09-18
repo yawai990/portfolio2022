@@ -1,21 +1,17 @@
-import React,{useEffect} from 'react';
+import React from 'react';
 import {motion} from 'framer-motion';
 import { useGlobalContext } from '../../context/context';
 import './index.css';
 
 const Hero = () => {
-    const {darkTheme,setDarkTheme,themeColor} = useGlobalContext();
+    const {darkTheme,themeColor} = useGlobalContext();
     const myName = 'yawai';
     const nameArr = myName.split('');
 
-  useEffect(()=>{
-    document.getElementById('name').addEventListener('mousemove',e=>{
-      console.log(e)
-    })
-  },[])
+
   return (
     <section id='home' 
-    className="snap-always snap-start w-full h-full flex justfiy-center items-center min-h-screen relative">
+    className="snap-always md:snap-start w-full h-full flex justfiy-center items-center min-h-screen relative dark:text-slate-500">
 
             <div className='w-10/12 m-auto h-full md:w-5/12 flex justify-center flex-col items-center p-2 text-center'>
                 <h1 id='name_container' className='text-5xl mb-2'>Hi! I am 
@@ -40,8 +36,8 @@ const Hero = () => {
                     transition={{
                         stiffness:30,
                         type:'spring',
-                        duration:0.2,
-                        delay:0.2*ind
+                        duration:0.08,
+                        delay:0.08*ind
                     }}
 
                     style={{
@@ -67,7 +63,7 @@ const Hero = () => {
 
                 <a href="#contact" type='button' style={{
                     backgroundColor:themeColor
-                }} className='p-2 rounded text-white hover:bg-blue-800'>Contact Me</a>
+                }} className='p-2 rounded text-white my-5 md:my-0 hover:bg-blue-800'>Contact Me</a>
             </div>
 
             <motion.div className='hidden md:block w-7/12 h-screen'

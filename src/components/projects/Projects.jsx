@@ -1,9 +1,10 @@
-import React,{useState,useRef} from 'react';
+import React,{useRef} from 'react';
 import {AiFillGithub} from 'react-icons/ai';
 import {GrOverview} from 'react-icons/gr'
 import {motion,useInView} from 'framer-motion';
-import './index.css';
+import Header from '../header/Header';
 import {about01,about02,about03,about04} from '../../assets/projectImg';
+import './index.css';
 
 const projects = [
   {id:1,
@@ -26,6 +27,8 @@ const projects = [
 
 const Projects = () => {
   const ref= useRef(null);
+  const proArr = 'projects'.split('');
+  const secHeader = 'this is my recent projects'.split('');
 
   //return as a boolean
   const inView = useInView(ref);
@@ -44,15 +47,15 @@ const Projects = () => {
   }
 
   return (
-    <div id="projects" className="snap-always snap-start w-full dark:text-slate-500">
+    <section id="projects" className="snap-always md:snap-start w-full min-h-screen dark:text-slate-500">
 
-            <div className="p-2 mb-4">
-              <h4 className="text-2xl font-semibold">Projects</h4>
+            <div className="p-1 mb-3">
+              <Header textArr={proArr} />
+              <Header textArr={secHeader} size='xl' align='center' />
 
-              <h4 className="text-xl font-semibold text-center uppercase tracking-wider">this is my recent works</h4>
             </div>
 
-          <div className='grid grid-cols-2 md:grid-cols-4' ref={ref}>
+          <div id='project_cards_container' className='grid grid-cols-2 md:grid-cols-4' ref={ref}>
               {
                 projects.map(pro=>(
                   <motion.div id='project_card_container' 
@@ -66,7 +69,7 @@ const Projects = () => {
                     damping: 50,
                     delay:0.1*pro.id
                   }}
-                  className="h-96 relative duration-200 overflow-hidden" 
+                  className="h-80 relative duration-200 overflow-hidden" 
                   key={pro.id}
                   >
 
@@ -90,7 +93,7 @@ const Projects = () => {
                 ))
               }
           </div>
-    </div>
+    </section>
   )
 }
 

@@ -1,6 +1,7 @@
-import React,{useState} from 'react';
-import {Contact,Hero,Sidebar,About,Skills,Projects,Theme} from './components';
+import React,{useEffect} from 'react';
+import {Contact,Hero,Sidebar,MobileSide,About,Skills,Projects,Theme,Viber} from './components';
 import {BsCheckLg} from 'react-icons/bs';
+import {AiOutlineBars} from 'react-icons/ai';
 import { useGlobalContext } from './context/context';
 import { ThemeColor } from './data';
 
@@ -8,23 +9,50 @@ const App = () => {
         const {darkTheme,
                   showThemeColorContainer,
                   setShowThemeColorContainer,
-                  themeColor,setThemeColor
+                  themeColor,setThemeColor,
+                  setSideActive
                 } = useGlobalContext();
 
           const setMode=(color,px)=>{
             setShowThemeColorContainer(px)
             setThemeColor(color)
-          }
+          };
+
+
+          //need to find out current element 
+          useEffect(()=>{
+                document.body.addEventListener('scroll',e=>console.log(e))
+          },[])
 
   return (
     <div className={darkTheme ? 'dark':''}>
-    <div className="w-screen h-screen overflow-hidden flex scroll-smooth dark:bg-dark-bg">
+    <div className="w-screen h-screen flex scroll-smooth dark:bg-dark-bg relative overflow-hidden">
     
       {/* side bar */}
       <Sidebar />
+      <MobileSide />
 
                 <div className='w-12/12 md:w-10/12 max-h-screen overflow-scroll overflow-x-hidden scroll-smooth snap-y snap-mandatory duration-100 relative'>
 
+                {/* viber message icon */}
+                <div className='fixed bottom-5 right-10 z-40'> 
+                    <Viber />
+                </div>
+
+                {/* side bar button */}
+                <div className="fixed top-3 z-20 px-3 md:hidden">
+                    <button style={{
+                      color:themeColor
+                    }} 
+                    onClick={()=>setSideActive(true)}
+                    className='p-2 text-2xl bg-white drop-shadow-lg rounded-full dark:bg-slate-500 dark:font-semibold'
+                    
+                    >
+                      <AiOutlineBars />
+                    </button>
+                  </div>
+
+                      {/* theme & color */}
                   <div className="fixed top-5 right-12 flex gap-3 z-10">
                         <Theme />
                   </div>
@@ -48,7 +76,7 @@ const App = () => {
                         ))
                       }
              </div>
-
+                        
                   <Hero />
                   <About />
                   <Skills />

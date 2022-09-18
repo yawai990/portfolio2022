@@ -1,31 +1,44 @@
 import React from 'react';
-import { skillImg } from '../../data';
+import { skillImg,skillSlogan } from '../../data';
 import {motion} from 'framer-motion';
+import Header from '../header/Header';
+import Para from '../header/Para';
 import { useGlobalContext } from '../../context/context';
 import './index.css';
 
 const Skills = () => {
     const {themeColor} = useGlobalContext();
+    const text='core skills';
+    const skillsArr = text.split('');
+    const sloganArr = skillSlogan.split('');
+    const secondArr  ='web development skills'.split('');
+    
   return (
-        <div id="skills" className="snap-always snap-start w-full dark:text-slate-500">
+        <section id="skills" className="snap-always md:snap-center w-full min-h-screen dark:text-slate-500">
 
-            <div className='p-2'>
-
-            <h4 className='font-semibold uppercase tracking-wide text-2xl'>Core skills</h4>
-            </div>
+                    <div className="header p-2">
+                <Header textArr={skillsArr} />
+                </div>
 
                 <div className="w-full">
                     <div 
                     style={{
-                        color:themeColor
+                        color:themeColor,
+                        borderTopLeftRadius:'150px',
+                        borderBottomRightRadius:'150px',
                     }}
                      className="w-full h-44 flex justify-center items-center p-4 bg-bg-primary dark:bg-[#191919]">
-                        <p className='w-11/12 md:w-2/5 text-lg text-center tracking-wide p-2'>Passionate about crafting the deligtful and functional experiences and focused on writing clean and efficient code</p>
+                        <p className='w-11/12 md:w-2/5 text-lg text-justify md:text-center tracking-wide p-5 md:p-2'>
+                            <Para textArr={sloganArr} />
+                        </p>
                     </div>
 
                         <div className="w-full py-4">
     
-                            <h5 className="font-semibold tracking-wide text-xl text-center my-2 p-2 mb-3">Web Development Skills</h5>
+                        <Header
+                         textArr={secondArr} size='lg' 
+                         align='center' marginY3X={true} 
+                         />
 
                     <div className='w-4/5 m-auto flex flex-wrap gap-5 p-2 justify-center'>
                         {
@@ -56,7 +69,7 @@ const Skills = () => {
                 </div>
 
 
-        </div>
+        </section>
   )
 }
 

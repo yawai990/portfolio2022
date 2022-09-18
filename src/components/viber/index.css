@@ -1,0 +1,110 @@
+#viber_btn_container::before,
+#viber_btn_container::after {
+    content: '';
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    border-radius: 9999px;
+    border: 1px solid rgba(68, 68, 68, 0.543);
+    box-shadow: 0 2px 15px #23195597;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+
+#viber_btn_container::after {
+    animation: aniAfter 4s linear infinite;
+}
+
+#viber_btn_container::before {
+    animation: aniBefore 4s linear infinite 0.14s;
+}
+
+
+@keyframes aniBefore {
+
+    0%,
+    100% {
+        transform: scale(0.3);
+        display: none;
+    }
+
+    20% {
+        transform: scale(0.8);
+    }
+
+    40% {
+        transform: scale(1.15);
+    }
+
+    45% {
+        transform: scale(1.15);
+        display: none;
+    }
+
+    50% {
+        transform: scale(0);
+        display: none;
+    }
+
+    60% {
+        transform: scale(0.8);
+        display: block;
+    }
+
+    85% {
+        transform: scale(1.15);
+        display: block;
+    }
+
+    95% {
+        transform: scale(1.15);
+        display: none;
+    }
+}
+
+/* after */
+
+@keyframes aniAfter {
+
+    0%,
+    100% {
+        transform: scale(0.3);
+        display: none;
+    }
+
+    20% {
+        transform: scale(0.8);
+    }
+
+    40% {
+        transform: scale(1.2);
+    }
+
+    45% {
+        transform: scale(1.2);
+        display: none;
+    }
+
+    50% {
+        transform: scale(0);
+        display: none;
+    }
+
+    60% {
+        transform: scale(0.8);
+        display: block;
+    }
+
+    85% {
+        transform: scale(1.2);
+        display: block;
+    }
+
+    95% {
+        transform: scale(1.25);
+        display: none;
+    }
+}

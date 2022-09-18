@@ -15,10 +15,15 @@ const Theme = () => {
             style={{
               color:themeColor
             }}
-            className="w-7 h-7 rounded-full bg-white drop-shadow-lg cursor-pointer  dark:bg-slate-400 flex justify-center items-center" 
+            className="w-7 h-7 rounded-full bg-white drop-shadow-lg cursor-pointer  dark:bg-slate-400 flex justify-center items-center text-lg" 
             onClick={()=>setDarkTheme(prev=>setDarkTheme(!prev))}
             >
-                {darkTheme ? <BsMoonStarsFill />:<BsFillSunFill />}
+                {darkTheme ? <BsMoonStarsFill />:
+                <BsFillSunFill style={{
+                                animation:'ani 1.5s ease-in-out infinite'
+                }} 
+                className='block'
+                />}
         </div> 
         <div className="w-7 h-7 rounded-full bg-white drop-shadow-lg cursor-pointer dark:bg-slate-400 flex justify-center items-center text-lg" 
         onClick={()=>setShowThemeColorContainer('25px')}

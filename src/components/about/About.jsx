@@ -3,8 +3,10 @@ import {FaQuoteLeft,FaQuoteRight} from 'react-icons/fa';
 import {BiRightArrow} from 'react-icons/bi';
 import {motion } from 'framer-motion';
 import './index.css';
+import Header from '../header/Header';
+import Para from '../header/Para';
 import { useGlobalContext } from '../../context/context';
-import { AboutData } from '../../data';
+import { AboutData,aboutSlogan } from '../../data';
 
 const About = () => {
   const {themeColor}= useGlobalContext();
@@ -13,6 +15,7 @@ const About = () => {
   const aboutHead = 'About Me';
   //this gonna be array
   const aboutArr = aboutHead.split('');
+  const sloganArr =aboutSlogan.split('');
 
   const setMode =(year,id)=>{
     setCurrentYear(year);
@@ -22,35 +25,12 @@ const About = () => {
   }
 
   return (
-    <section id='about' className='snap-always snap-start w-full p-1 dark:text-slate-500'>
+    <section id='about' className='snap-always md:snap-start w-full p-1 min-h-screen dark:text-slate-500'>
 
       <div className="header p-2">
-        <h2 id='header' className='text-3xl tracking-wide font-semibold'
-        >
-          {
-              aboutArr.map((text,ind)=>(
-                <motion.span 
-                key={ind}
-                initial={{
-                  rotateX:90,
-                  rotateY:-60
-                }}
-                whileInView={{
-                  rotateX:0,
-                  rotateY:0
-                }}
-                transition={{
-                  duration:0.2,
-                  delay:ind *0.2
-                }}
-                className='inline-block'
-                >{text !== ' ' ? text:<span>&nbsp;</span>}
-                </motion.span>
-              ))
-          }
-          </h2>
-
+        <Header textArr={aboutArr} />
       </div>
+
         <motion.p
          className='text-2xl text-center mt-4 pl-3 text-text-sidebg'
          whileInView={{
@@ -74,13 +54,15 @@ const About = () => {
 
         <motion.p className='w-full mb-5 md:mb-0 md:p-0 ml-auto'
                  whileInView={{
-                  y:[100,0],
+                  y:[40,0],
                   opacity:[0,1]
                 }}
                 transition={{
-                  delay:0.9
+                  duration:0.25
                 }}
-        >Lorem ipsum dolor sit amet consectetur adipisicing elit. Id delectus vero quod aperiam odio ratione quia ipsum aspernatur quidem debitis.</motion.p>
+        >
+          <Para textArr={sloganArr} />
+        </motion.p>
 
                 
         <div className="w-full mb-5 md:mb-0 md:p-0 ml-auto mt-2">
