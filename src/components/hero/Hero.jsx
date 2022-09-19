@@ -8,7 +8,6 @@ const Hero = () => {
     const myName = 'yawai';
     const nameArr = myName.split('');
 
-
   return (
     <section id='home' 
     className="snap-always md:snap-start w-full h-full flex justfiy-center items-center min-h-screen relative dark:text-slate-500">
@@ -19,7 +18,7 @@ const Hero = () => {
                 <strong className='block my-1 p-2 lg:p-0 w-full md:w-auto lg:my-0 lg:inline'>
                 {
                   nameArr.map((word,ind)=>(
-                    <motion.span id='name_word' 
+                    <motion.span id='name_word'
                     initial={{
                         rotateX:80,
                         rotateY:-45,
@@ -45,7 +44,8 @@ const Hero = () => {
                         letterSpacing:'1px',
                       transform:'rotateX(90deg)'
                     }}
-                     key={ind} className='text-transparent uppercase inline-block cursor-pointer relative' data-text={word}
+                     key={ind} 
+                     className='name_word text-transparent uppercase inline-block cursor-pointer relative' data-text={word}
                      data-color={themeColor}
                      >{word}</motion.span>
                   ))
