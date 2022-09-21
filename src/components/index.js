@@ -7,3 +7,4 @@ export {default as Skills} from './skills/Skills';
 export {default as Projects} from './projects/Projects';
 export {default as Theme} from './Theme/Theme';
 export {default as Viber} from './viber/Viber';
+export {default as Loading} from './Loading/Loading';

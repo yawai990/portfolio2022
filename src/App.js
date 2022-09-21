@@ -1,31 +1,39 @@
-import React,{useEffect} from 'react';
-import {Contact,Hero,Sidebar,MobileSide,About,Skills,Projects,Theme,Viber} from './components';
+import React,{useEffect,useState} from 'react';
+import {Contact,Hero,Sidebar,MobileSide,About,Skills,Projects,Theme,Viber,Loading} from './components';
 import {BsCheckLg} from 'react-icons/bs';
 import {AiOutlineBars} from 'react-icons/ai';
 import { useGlobalContext } from './context/context';
 import { ThemeColor } from './data';
 
+
 const App = () => {
+  const [loading,setLoading] =useState(true);
         const {darkTheme,
                   showThemeColorContainer,
                   setShowThemeColorContainer,
                   themeColor,setThemeColor,
-                  setSideActive
+                  setSideActive,FetchProjects
                 } = useGlobalContext();
 
           const setMode=(color,px)=>{
             setShowThemeColorContainer(px)
             setThemeColor(color)
+            localStorage.setItem('themeColor',color)
           };
 
-
-          //need to find out current element 
+          setTimeout(() => {
+            setLoading(false)
+          }, 3000);
           useEffect(()=>{
-                document.body.addEventListener('scroll',e=>console.log(e))
-          },[])
+            FetchProjects()
+          },[]);
+
+          if(loading){
+            return <Loading />
+          }
 
   return (
-    <div className={darkTheme ? 'dark':''}>
+    <div className={darkTheme === 'dark' ? 'dark':''}>
     <div className="w-screen h-screen flex scroll-smooth dark:bg-dark-bg relative overflow-hidden">
     
       {/* side bar */}
