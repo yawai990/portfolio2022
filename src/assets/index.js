@@ -11,3 +11,8 @@ export {default as express} from './images/express.svg';
 export {default as tailwind} from './images/tailwind.svg';
 export {default as programmer} from './images/programmer.svg';
 export {default as logo} from './images/yawai.svg';
+
+//project images
+export {default as waaneiza} from './images/projects/waaneiza.png';
+export {default as dashboard} from './images/projects/dashboard.png';
+export {default as oil} from './images/projects/oil.png';

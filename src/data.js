@@ -1,4 +1,4 @@
-import {html,css,javascript,redux,react,node,mysql,mongoDB,tailwind,bootstrap,express} from './assets';
+import {html,css,javascript,redux,react,node,mysql,mongoDB,tailwind,bootstrap,express,oil,dashboard,waaneiza} from './assets';
 
 export const ThemeColor = [
     '#F76E11','#6F38C5',
@@ -45,3 +45,27 @@ export const skillImg=[
 export const skillSlogan = 'Passionate about crafting the deligtful and functional experiences and focused on writing clean and efficient code';
 
 export const aboutSlogan = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Id delectus vero quod aperiam odio ratione quia ipsum aspernatur quidem debitis.';
+
+export const projects =[
+    {
+        _id:1,
+        seletedFile:waaneiza,
+        codeLink:'https://github.com/yawai990?tab=repositories',
+         demoLink:'https://bge22customerdata.netlify.app',
+      desc:'This projects created in MERN.Here, u can insert the new customer data,search'
+    },
+    {
+        _id:2,
+        seletedFile:oil,
+        codeLink:'https://github.com/yawai990?tab=repositories',
+         demoLink:'',
+      desc:'create with node js only,CRUD,print out by vouncher,passport authenticatication.In this app,there is two types of user(admin,user).'
+    },
+    {
+        _id:3,
+        seletedFile:dashboard,
+        codeLink:'https://github.com/yawai990?tab=repositories',
+         demoLink:'',
+      desc:'create with node js only,CRUD,print out by vouncher,passport authenticatication.In this app,there is two types of user(admin,user).'
+    }
+]

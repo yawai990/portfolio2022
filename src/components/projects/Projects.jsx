@@ -1,34 +1,15 @@
 import React,{useRef,useState,useEffect} from 'react';
 import {AiFillGithub} from 'react-icons/ai';
-import {GrOverview} from 'react-icons/gr'
+import {GrFormView} from 'react-icons/gr'
 import {motion,useInView} from 'framer-motion';
 import Header from '../header/Header';
 import './index.css';
 import { useGlobalContext } from '../../context/context';
-import {react,javascript,node} from '../../assets';
+import { projects } from '../../data';
 
-const projects = [
-  {_id:1,
-    seletedFile:react,
-    codeLink:'',
-     demoLink:'',
-  desc:'The unknown-prop warning will fire if you attempt to render a DOM element with a prop that is not recognized by React as a legal DOM attribute/property.'
-},
-  {
-    _id:2,
-    seletedFile:node,
-    codeLink:'',
-     demoLink:'',
-desc:'The unknown-prop warning will fire if you attempt to render a DOM element with a prop that is not recognized by React as a legal DOM attribute/property.'},
-  {_id:3,
-    seletedFile:javascript,
-    codeLink:'',
-     demoLink:'',
-desc:'The unknown-prop warning will fire if you attempt to render a DOM element with a prop that is not recognized by React as a legal DOM attribute/property.'},
-]
 
 const Projects = () => {
-  // const {state} = useGlobalContext();
+  const {state,themeColor} = useGlobalContext();
   // const [projects,setProjects] = useState([]);
   const ref= useRef(null);
   const proArr = 'projects'.split('');
@@ -86,15 +67,26 @@ const Projects = () => {
                         <div id='project_card_text' className="absolute w-full h-full flex justify-center items-center">
 
 
-                          <div className='w-full flex justify-around'>
+                          <div className='w-full flex justify-around flex-col'>
+
+                            <p className='dark:text-white text-slate-400 px-3 text-sm text-justify mb-4'>{pro.desc}</p>
+                            <div className='flex justify-around'>
                          <a href={pro.codeLink}
-                           className='w-10 h-10 rounded-full bg-bg-primary flex justify-center items-center text-white hover:drop-shadow-lg cursor-pointer drop-shadow-lg hover:bg-[#B1B2FF]'>
-                            <AiFillGithub />
+                         style={{
+                          backgroundColor:themeColor
+                         }}
+                           className='w-10 h-10 rounded-full flex justify-center items-center text-white hover:drop-shadow-lg cursor-pointer drop-shadow-lg hover:text-black' >
+                            <AiFillGithub className='w-8 h-8' />
                             </a>
                           <a href={pro.demoLink}
-                           className='w-10 h-10 rounded-full bg-bg-primary flex justify-center items-center text-white hover:drop-shadow-lg cursor-pointer drop-shadow-lg hover:bg-[#B1B2FF]'>
-                            <GrOverview />
+                          style={{
+                            backgroundColor:themeColor
+                          }}
+                           className='w-10 h-10 rounded-full flex justify-center items-center text-white hover:drop-shadow-lg cursor-pointer drop-shadow-lg hover:text-red-400'>
+                            <GrFormView className='w-8 h-8 rounded-full hover:bg-white' />
                            </a>
+                           </div>
+
                           </div>
                         </div>
                   </motion.div>  
