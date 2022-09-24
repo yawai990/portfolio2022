@@ -1,17 +1,18 @@
-import React,{useState,useEffect} from 'react';
+import React,{useState} from 'react';
 import {FaQuoteLeft,FaQuoteRight} from 'react-icons/fa';
 import {BiRightArrow} from 'react-icons/bi';
 import {motion } from 'framer-motion';
-import './index.css';
 import Header from '../header/Header';
 import Para from '../header/Para';
 import { useGlobalContext } from '../../context/context';
 import { AboutData,aboutSlogan } from '../../data';
+import {me} from '../../assets';
+import './index.css';
 
 const About = () => {
   const {themeColor}= useGlobalContext();
-  const [currentYear,setCurrentYear]  = useState(0);
-  const [progressWidth,setProgressWidth] = useState(0);
+  const [currentYear,setCurrentYear]  = useState(2018);
+  const [progressWidth,setProgressWidth] = useState(100/AboutData.length);
   const aboutHead = 'About Me';
   //this gonna be array
   const aboutArr = aboutHead.split('');
@@ -25,7 +26,7 @@ const About = () => {
   }
 
   return (
-    <section id='about' className='snap-always md:snap-start w-full p-1 min-h-screen dark:text-slate-500'>
+    <section id='about' className='snap-always lg:snap-start w-full p-1 min-h-screen dark:text-slate-500'>
 
       <div className="header p-2">
         <Header textArr={aboutArr} />
@@ -47,12 +48,12 @@ const About = () => {
           }} className='ml-5 italic' />
         </motion.p>
       
-      <div className='flex flex-col md:flex-row'>
-      <div className='w-full md:w-3/5'>
+      <div className='flex flex-col lg:flex-row'>
+      <div className='w-full lg:w-3/5'>
 
-            <div className='p-6'>
+            <div className='md:p-5 lg:p-6'>
 
-        <motion.p className='w-full mb-5 md:mb-0 md:p-0 ml-auto'
+        <motion.p className='w-full mb-5 md:mb-0 md:p-3 ml-auto break-words'
                  whileInView={{
                   y:[40,0],
                   opacity:[0,1]
@@ -75,7 +76,7 @@ const About = () => {
                                 filter:currentYear !== about.year ? 'grayscale(1)':'grayscale(0)'
                               }}
                               key={about.id} 
-                              className='w-full md:w-44 p-2 rounded-md mb-4 cursor-pointer'
+                              className='w-full md:w-40 lg:w-44 p-2 rounded-md mb-4 cursor-pointer'
                               whileInView={{
                                 y:[100,0],
                                 opacity:[0,1]
@@ -90,7 +91,7 @@ const About = () => {
           }} className='font-bold text-lg tracking-wider'>{about.year}</h5>
           <div>
             {about.desc.map((exp,ind)=>(
-              <div key={ind} className='flex mt-3 justify-start items-center gap-1 bg-[#16213E]  rounded-lg text-[#ABD9FF] p-2'>
+              <div key={ind} className='flex mt-3 justify-start items-center gap-1 bg-[#16213E]  rounded-lg text-[#ABD9FF] p-2 dark:drop-shadow-light'>
                 <span style={{
                   fontSize:'12px'
                 }} className='bg-blue-400 p-1 text-white rounded-lg 
@@ -98,7 +99,9 @@ const About = () => {
                 >  <BiRightArrow /> </span>
                 <span style={{
                   fontSize:'12px',
-                  marginTop:'8px'
+                  marginTop:'8px',
+                  lineHeight:2,
+                  padding:'3px'
                 }}>{exp}</span>
               </div>
             ))}
@@ -129,7 +132,7 @@ const About = () => {
         </div>
       </div>
 
-        <div className='w-full md:w-2/5 py-3 flex justify-center items-center overflow-hidden'>
+        <div className='w-full lg:w-2/5 py-3 flex justify-center items-center overflow-hidden'>
       <motion.div 
       id="about_img"
       data-theme-color={themeColor}
@@ -149,14 +152,14 @@ const About = () => {
       delay:0.8
     }}
       >
-              <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8cGVyc29ufGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60" alt="" className='w-full rounded-lg duration-100' />
+              <img src={me} alt="" className='w-full rounded-lg duration-100' />
       </motion.div>
         </div>
         </div>
 
       <div className="flex justify-end items-center mb-2 p-2">
         <motion.p 
-        className='text-2xl mt-2 pl-3 text-text-sidebg'
+        className='text-2xl pl-3 mr-5 text-text-sidebg'
         whileInView={{
           opacity:[0,1],
           y:[20,0]

@@ -10,10 +10,14 @@ const Hero = () => {
 
   return (
     <section id='home' 
-    className="snap-always md:snap-start w-full h-full flex justfiy-center items-center min-h-screen relative dark:text-slate-500">
+    className="snap-always lg:snap-start w-full h-full flex justfiy-center items-center flex-col lg:flex-row min-h-screen relative dark:text-slate-500">
 
-            <div className='w-10/12 m-auto h-full md:w-5/12 flex justify-center flex-col items-center p-2 text-center'>
-                <h1 id='name_container' className='text-5xl mb-2'>Hi! I am 
+            <div className='w-10/12 m-auto h-full lg:w-5/12 flex justify-center flex-col items-center p-2 md:mt-4 text-center'>
+                <h1 id='name_container' className='text-5xl mb-2'>
+                    <span style={{
+                        transform:''
+                    }} className='inline-block'>👋</span>
+                 Hi! I am 
                 <span>&nbsp;</span>
                 <strong className='block my-1 p-2 lg:p-0 w-full md:w-auto lg:my-0 lg:inline'>
                 {
@@ -52,21 +56,23 @@ const Hero = () => {
                 }
                 </strong>
                 </h1>
-                <p className='my-3 dark:text-slate-400'>Junior Web Developer</p>
+                <p className='my-3 dark:text-slate-400 text-2xl'>Junior Web Developer</p>
 
-                <motion.p className='dark:text-slate-400 w-4/5 text-justify p-2'
+                <motion.p className='dark:text-slate-400 lg:w-4/5 text-justify p-2'
                 animate={{
                     y:[100,0],
                     opacity:[0,1]
                 }}
-                >Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolorum, eius?</motion.p>
+                >
+                    passionate about creating interactive applications.
+                </motion.p>
 
                 <a href="#contact" type='button' style={{
                     backgroundColor:themeColor
-                }} className='p-2 rounded text-white my-5 md:my-0 hover:bg-blue-800'>Contact Me</a>
+                }} className='p-2 rounded text-white my-5 md:my-0 md:mt-2 hover:bg-blue-800'>Contact Me</a>
             </div>
 
-            <motion.div className='hidden md:block w-7/12 h-screen'
+            <motion.div className='hidden md:block md:w-4/5 lg:w-7/12 lg:h-screen'
             whileInView={{
               scale:[0,1],
               x:[100,0],

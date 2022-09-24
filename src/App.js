@@ -1,5 +1,5 @@
-import React,{useEffect,useState} from 'react';
-import {Contact,Hero,Sidebar,MobileSide,About,Skills,Projects,Theme,Viber,Loading} from './components';
+import React,{useEffect,useState,useRef} from 'react';
+import {Contact,Hero,Sidebar,MobileSide,About,Skills,Projects,Theme,Viber,Loading,Main} from './components';
 import {BsCheckLg} from 'react-icons/bs';
 import {AiOutlineBars} from 'react-icons/ai';
 import { useGlobalContext } from './context/context';
@@ -8,6 +8,7 @@ import { ThemeColor } from './data';
 
 const App = () => {
   const [loading,setLoading] =useState(true);
+  const ref= useRef(null);
         const {darkTheme,
                   showThemeColorContainer,
                   setShowThemeColorContainer,
@@ -23,11 +24,12 @@ const App = () => {
 
           setTimeout(() => {
             setLoading(false)
-          }, 3000);
+          }, 2000);
           useEffect(()=>{
             FetchProjects()
           },[]);
 
+          
           if(loading){
             return <Loading />
           }
@@ -85,11 +87,8 @@ const App = () => {
                       }
              </div>
                         
-                  <Hero />
-                  <About />
-                  <Skills />
-                  <Projects />
-                <Contact />
+                  <Main />
+              
                 </div>
     </div>
 

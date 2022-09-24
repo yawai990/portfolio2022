@@ -3,21 +3,22 @@ import { NavLinks } from '../../data';
 import {motion} from 'framer-motion';
 import { useGlobalContext } from '../../context/context';
 
-const icon = {
-  hidden: { 
-    pathLength: 0,
-    },
-  visible: {
-    pathLength: 1,
-      transition:{
-          duration:2,
-          ease:"easeInOut"
-      }
-  }
-}
 
 const Sidebar = () => {
   const {currentPage,setPage,themeColor} = useGlobalContext();
+
+  const icon = {
+    hidden: { 
+      pathLength: 0,
+      },
+    visible: {
+      pathLength: 1,
+        transition:{
+            duration:2,
+            ease:"easeInOut",
+        }
+    }
+  }
   
   return (
 
@@ -25,8 +26,8 @@ const Sidebar = () => {
 
         <div className='flex-1'>
                         <a href="#home" className='flex justify-start items-center p-2'>
-                        <svg width="100" height="45" viewBox="0 0 111 65" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                      <mask id="path-1-outside-1_104_6" maskUnits="userSpaceOnUse" x="0" y="0" width="111" height="65" fill="black">
+                        <svg width="100" height="45" viewBox="0 0 111 65" fill="" xmlns="http://www.w3.org/2000/svg">
+                                      <mask id="path-1-outside-1_104_6" maskUnits="userSpaceOnUse" x="0" y="0" width="111" height="65" fill="">
                                       <rect fill="white" width="111" height="65"/>
                                       <motion.path 
                                       variants={icon}

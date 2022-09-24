@@ -21,7 +21,7 @@ module.exports = {
           'sans':['Merriweather',]
         },
         dropShadow:{
-          'light':'2px 0 8px #5151519e',
+          'light':'0 0 1px #ffdad0',
           '3xl': '0 35px 15px rgba(0, 0, 0, 0.25)'
         }
       },

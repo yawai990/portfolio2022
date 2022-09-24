@@ -14,7 +14,7 @@ const Skills = () => {
     const secondArr  ='web development skills'.split('');
     
   return (
-        <section id="skills" className="snap-always md:snap-center w-full min-h-screen dark:text-slate-500">
+        <section id="skills" className="snap-always lg:snap-center w-full min-h-screen dark:text-slate-500">
 
                     <div className="header p-2">
                 <Header textArr={skillsArr} />
@@ -28,7 +28,9 @@ const Skills = () => {
                         borderBottomRightRadius:'150px',
                     }}
                      className="w-full h-44 flex justify-center items-center p-4 bg-bg-primary dark:bg-[#191919]">
-                        <p className='w-11/12 md:w-2/5 text-lg text-justify md:text-center tracking-wide p-5 md:p-2'>
+                        <p style={{
+                            lineHeight:2.2
+                        }} className='w-11/12 md:w-3/5 text-lg text-justify md:text-center tracking-wide p-5 md:p-3'>
                             <Para textArr={sloganArr} />
                         </p>
                     </div>
@@ -52,7 +54,7 @@ const Skills = () => {
                                 transition={{
                                     delay:0.07*img.id
                                 }}
-                                className="w-28 h-28 rounded-full drop-shadow-lg cursor-pointer"
+                                className="w-28 h-28 rounded-full drop-shadow-lg cursor-pointer dark:drop-shadow-light"
                                 >
                                     <div  id='skill_img_container' className='w-full h-full flex justify-center items-center bg-white dark:bg-[#19282F] p-2' >
                                     <img id='skill_img' style={{

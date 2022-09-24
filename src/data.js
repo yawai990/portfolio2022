@@ -42,9 +42,9 @@ export const skillImg=[
     {id:11,images:mysql},
 ];
 
-export const skillSlogan = 'Passionate about crafting the deligtful and functional experiences and focused on writing clean and efficient code';
+export const skillSlogan = 'Passionate about crafting the deligtful and functional experiences and focused on writing clean and efficient code.';
 
-export const aboutSlogan = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Id delectus vero quod aperiam odio ratione quia ipsum aspernatur quidem debitis.';
+export const aboutSlogan = "Hello World! I'm Yawai Aung, junior web developer , based on Yangon. I'm excited to leap and continue refining my skills with the right company.";
 
 export const projects =[
     {

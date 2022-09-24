@@ -1,4 +1,4 @@
-import React,{useRef,useState,useEffect} from 'react';
+import React,{useRef} from 'react';
 import {AiFillGithub} from 'react-icons/ai';
 import {GrFormView} from 'react-icons/gr'
 import {motion,useInView} from 'framer-motion';
@@ -36,7 +36,7 @@ const Projects = () => {
   }
 
   return (
-    <section id="projects" className="snap-always md:snap-start w-full min-h-screen dark:text-slate-500">
+    <section id="projects" className="snap-always lg:snap-start w-full md:h-auto md:mb-5 dark:text-slate-500">
 
             <div className="p-1 mb-3">
               <Header textArr={proArr} />
@@ -44,7 +44,7 @@ const Projects = () => {
 
             </div>
 
-          <div id='project_cards_container' className='grid grid-cols-2 md:grid-cols-4' ref={ref}>
+          <div id='project_cards_container' className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4' ref={ref}>
               {
              projects?.map(pro=>(
                   <motion.div id='project_card_container' 

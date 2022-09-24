@@ -8,11 +8,10 @@ const Contact = () => {
   const contactArr='Get In Touch'.split('');
   const interviewArr = "let's talk about an interview".split('');
   return (
-    <section id='contact' className="snap-always md:snap-end w-full min-h-screen dark:text-slate-500">
+    <section id='contact' className="snap-always lg:snap-end w-full min-h-screen dark:text-slate-500">
 
             <div 
             style={{
-              color:themeColor,
               borderTopRightRadius:'150px',
               borderBottomLeftRadius:'150px',
             }}
@@ -33,14 +32,20 @@ const Contact = () => {
                               <motion.input 
                               type="text" name='name' 
                               id='name' 
-                              className='w-full md:flex-1 outline-none border focus:border-2 focus:border-[#5F6F94] p-2 rounded-lg mb-2 sm:mb-0 dark:bg-transparent dark:caret-white dark:border-[#182747]' 
+                              style={{
+                                borderColor:themeColor
+                              }}
+                              className='w-full md:flex-1 outline-none border p-2 rounded-lg mb-2 sm:mb-0 dark:bg-transparent dark:caret-white' 
                               placeholder='Your Name'
                               whileInView={{y:[100,0],opacity:[0,1]}}
                                />
                               <motion.input 
                               type="text" name='email' 
                               id='email' 
-                              className='w-full md:flex-1 outline-none border focus:border-2 focus:border-[#5F6F94] p-2 rounded-lg my-2 md:my-0 dark:bg-transparent dark:caret-white dark:border-[#182747]' 
+                              style={{
+                                borderColor:themeColor
+                              }}
+                              className='w-full md:flex-1 outline-none border p-2 rounded-lg my-2 md:my-0 dark:bg-transparent dark:caret-white' 
                               placeholder='Your Email'
                               whileInView={{y:[100,0],opacity:[0,1],transition:{
                                 delay:0.2
@@ -49,7 +54,10 @@ const Contact = () => {
                               <motion.input
                                type="text" 
                                name='phone' 
-                               id='phone' className='w-full md:flex-1 outline-none border focus:border-2 focus:border-[#5F6F94] p-2 rounded-lg dark:bg-transparent dark:caret-white dark:border-[#182747]'  
+                               style={{
+                                borderColor:themeColor
+                              }}
+                               id='phone' className='w-full md:flex-1 outline-none border p-2 rounded-lg dark:bg-transparent dark:caret-white'
                                placeholder='Your Phone' 
                                whileInView={{y:[100,0],opacity:[0,1],transition:{
                                 delay:0.4
@@ -62,7 +70,10 @@ const Contact = () => {
                       >
                         <textarea name="message" 
                         id="message" rows="5"
-                        className='w-full outline-none border focus:border-2 focus:border-[#5F6F94] py-1 px-2 rounded-lg dark:bg-transparent dark:caret-white dark:border-[#182747]'  
+                        style={{
+                          borderColor:themeColor
+                        }}
+                        className='w-full outline-none border py-1 px-2 rounded-lg dark:bg-transparent dark:caret-white'
                         placeholder='Your Message'
                         ></textarea>
                       </motion.div>
@@ -71,7 +82,7 @@ const Contact = () => {
                     style={{
                       borderColor:themeColor
                     }}
-                    className={`w-full md:w-auto border p-2 rounded-lg hover:drop-shadow-lg dark:text-slate-400 dark:hover:text-white`}
+                    className='w-full md:w-auto border p-2 rounded-lg hover:drop-shadow-lg dark:text-slate-400 dark:hover:text-white'
                     whileInView={{y:[20,0],opacity:[0,1],transition:{
                       delay:0.8
                     }}}
