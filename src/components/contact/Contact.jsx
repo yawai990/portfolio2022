@@ -1,14 +1,45 @@
-import React from 'react';
+import React,{useState,useEffect} from 'react';
 import {motion} from 'framer-motion';
 import Header from '../header/Header';
 import { useGlobalContext } from '../../context/context';
+import * as api from '../../api';
+
+const initState={
+  name:'',
+  email:'',
+  phone:'',
+  message:''
+};
 
 const Contact = () => {
   const {themeColor}= useGlobalContext();
   const contactArr='Get In Touch'.split('');
   const interviewArr = "let's talk about an interview".split('');
+  const [sendmail,setSendmail] = useState(initState);
+  const [resp,setResp] = useState('')
+
+  const onhandleSubmit =async (e)=>{
+    e.preventDefault();
+
+    api.sendMail(sendmail)
+    .then(resp=>setResp(resp.data.message));
+
+    setSendmail(initState)
+  };
+
+  useEffect(()=>{
+    setTimeout(()=>{
+      setResp('')
+    },4000)
+  },[resp])
+
   return (
-    <section id='contact' className="snap-always lg:snap-end w-full min-h-screen dark:text-slate-500">
+    <section id='contact' className="snap-always lg:snap-end w-full min-h-screen dark:text-slate-500 relative">
+
+      <div style={{display:resp ? 'flex':'none'}}
+      className={`p-2 rounded-lg bg-white drop-shadow-lg justify-center items-center absolute bottom-3 right-2.5 z-50`}>
+        <p>{resp}</p>
+      </div>
 
             <div 
             style={{
@@ -25,13 +56,15 @@ const Contact = () => {
             <Header textArr={contactArr} size='2xl' align='center' />
             <Header textArr={interviewArr} size='md' align='center' marginY3X={true} />
 
-              <form action="" className='p-4 pb-5'>
+              <form action="" className='p-4 pb-5' onSubmit={onhandleSubmit}>
 
                       <div className="gird grid-cols-3 md:flex gap-3">
                             
                               <motion.input 
                               type="text" name='name' 
                               id='name' 
+                              value={sendmail.name}
+                              onChange={e=>setSendmail({...sendmail,[e.target.name]:e.target.value})}
                               style={{
                                 borderColor:themeColor
                               }}
@@ -42,6 +75,8 @@ const Contact = () => {
                               <motion.input 
                               type="text" name='email' 
                               id='email' 
+                              value={sendmail.email}
+                              onChange={e=>setSendmail({...sendmail,[e.target.name]:e.target.value})}
                               style={{
                                 borderColor:themeColor
                               }}
@@ -54,6 +89,8 @@ const Contact = () => {
                               <motion.input
                                type="text" 
                                name='phone' 
+                               value={sendmail.phone}
+                               onChange={e=>setSendmail({...sendmail,[e.target.name]:e.target.value})}
                                style={{
                                 borderColor:themeColor
                               }}
@@ -70,6 +107,8 @@ const Contact = () => {
                       >
                         <textarea name="message" 
                         id="message" rows="5"
+                        value={sendmail.message}
+                        onChange={e=>setSendmail({...sendmail,[e.target.name]:e.target.value})}
                         style={{
                           borderColor:themeColor
                         }}

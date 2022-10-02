@@ -4,6 +4,7 @@ import {BsCheckLg} from 'react-icons/bs';
 import {AiOutlineBars} from 'react-icons/ai';
 import { useGlobalContext } from './context/context';
 import { ThemeColor } from './data';
+import * as api from './api';
 
 
 const App = () => {
@@ -25,10 +26,6 @@ const App = () => {
           setTimeout(() => {
             setLoading(false)
           }, 2000);
-          useEffect(()=>{
-            FetchProjects()
-          },[]);
-
           
           if(loading){
             return <Loading />

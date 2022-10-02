@@ -10,9 +10,9 @@ const Hero = () => {
 
   return (
     <section id='home' 
-    className="snap-always lg:snap-start w-full h-full flex justfiy-center items-center flex-col lg:flex-row min-h-screen relative dark:text-slate-500">
+    className="snap-always lg:snap-start w-full h-full flex justify-center items-center flex-col lg:flex-row min-h-screen relative dark:text-slate-500">
 
-            <div className='w-10/12 m-auto h-full lg:w-5/12 flex justify-center flex-col items-center p-2 md:mt-4 text-center'>
+            <div className='w-10/12 m-auto min-h-screen lg:w-5/12 flex justify-center flex-col items-center p-2 md:mt-4 text-center'>
                 <h1 id='name_container' className='text-5xl mb-2'>
                     <span style={{
                         transform:''

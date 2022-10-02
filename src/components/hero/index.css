@@ -23,7 +23,7 @@
 
 @keyframes spanName {
     0% {
-        transform: perspective(1000px) rotateZ(45deg) translate3d(0, -200px, 600px);
+        transform: perspective(1000px) rotateZ(45deg) translate3d(0, -800px, 600px);
     }
 
     30% {
@@ -45,8 +45,8 @@
     position: absolute;
     top: 0;
     left: 0;
-    transform: perspective(1000px) rotateZ(45deg) translate3d(0, -200px, 600px);
-        animation: spanNameOut 0.45s ease-in-out forwards;
+    transform: perspective(1000px) rotateZ(45deg) translate3d(0, -1000px, 600px);
+    animation: spanNameOut 0.45s ease-in-out forwards;
     }
     
     @keyframes spanNameOut {
@@ -67,7 +67,7 @@
         }
     
         100% {
-            transform: perspective(1000px) rotateZ(45deg) translate3d(0, -200px, 600px);
+            transform: perspective(1000px) rotateZ(45deg) translate3d(0, -600px, 600px);
         }
 }
 

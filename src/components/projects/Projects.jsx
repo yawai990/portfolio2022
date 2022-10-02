@@ -1,23 +1,19 @@
-import React,{useRef} from 'react';
+import React,{useRef,useEffect} from 'react';
 import {AiFillGithub} from 'react-icons/ai';
 import {GrFormView} from 'react-icons/gr'
 import {motion,useInView} from 'framer-motion';
 import Header from '../header/Header';
 import './index.css';
 import { useGlobalContext } from '../../context/context';
-import { projects } from '../../data';
+// import { projects } from '../../data';
 
 
 const Projects = () => {
-  const {state,themeColor} = useGlobalContext();
+  const {themeColor,state} = useGlobalContext();
   // const [projects,setProjects] = useState([]);
-  const ref= useRef(null);
+  const ref= useRef(null);  
   const proArr = 'projects'.split('');
   const secHeader = 'this is my recent projects'.split('');
-
-  // useEffect(()=>{
-  //     setProjects(state.projects)
-  // },[state])
 
   //return as a boolean
   const inView = useInView(ref);
@@ -46,7 +42,7 @@ const Projects = () => {
 
           <div id='project_cards_container' className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4' ref={ref}>
               {
-             projects?.map(pro=>(
+                state.projects.length > 0 ? state.projects?.map(pro=>(
                   <motion.div id='project_card_container' 
                   animate={ 
                   inView ? 'active':'init'
@@ -62,14 +58,12 @@ const Projects = () => {
                   key={pro._id}
                   >
 
-                        <img src={pro.seletedFile} alt="" className='w-full h-full object-cover object-center' />
+                        <img src={pro.selectedFile} alt="" className='w-full h-full object-cover object-center' />
 
                         <div id='project_card_text' className="absolute w-full h-full flex justify-center items-center">
-
-
                           <div className='w-full flex justify-around flex-col'>
 
-                            <p className='dark:text-white text-slate-400 px-3 text-sm text-justify mb-4'>{pro.desc}</p>
+                            <p className='dark:text-white text-slate-400 px-3 text-sm text-justify mb-4 break-words'>{pro.message}</p>
                             <div className='flex justify-around'>
                          <a href={pro.codeLink}
                          style={{
@@ -89,8 +83,14 @@ const Projects = () => {
 
                           </div>
                         </div>
+
+                        <div className='w-full h-10 bg-red-400'>
+                          <button>Like</button>
+                        </div>
                   </motion.div>  
-                ))
+                )):<div className='h-36'>
+                  <h5>Loading....</h5>
+                  </div>
               }
           </div>
     </section>

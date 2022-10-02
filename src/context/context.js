@@ -1,6 +1,6 @@
 import React,{createContext,useContext,useState,useEffect,useReducer} from 'react';
 import * as api from '../api';
-import {reducer} from '../reducer'
+import {reducer} from '../reducer';
 const myContext= createContext();
 
 const initState={
@@ -8,20 +8,23 @@ const initState={
   }
 
 export const ContextProvider = ({children})=>{
+  // const dispatch = useDispatch();
     const [darkTheme,setDarkTheme] = useState('light');
     const [themeColor,setThemeColor] = useState('#6F38C5');
     const [currentPage,setCurrentPage] = useState('home');
     const [showThemeColorContainer,setShowThemeColorContainer] = useState('-100%');
     const [sideActive,setSideActive] = useState(false);
-    const [projects,setProjects] = useState([]);
     const [state,dispatch] = useReducer(reducer,initState);
 
     const FetchProjects=async()=>{
-      const {data} = await api.fetchProjects();
-        
+      const {data}= await api.fetchProjects();
+
       dispatch({type:'FETCH_PROJECTS',payload:data});
     };  
 
+    useEffect(()=>{
+      FetchProjects()
+    },[]);
 
     //get the theme color and mode from localstorage
     useEffect(()=>{
@@ -40,7 +43,7 @@ export const ContextProvider = ({children})=>{
         themeColor,setThemeColor,
         currentPage,setPage,
         sideActive,setSideActive,
-        projects,state,setProjects,FetchProjects
+      state,FetchProjects
     
     }}>
         {children}

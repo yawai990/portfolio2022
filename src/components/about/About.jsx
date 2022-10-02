@@ -53,7 +53,7 @@ const About = () => {
 
             <div className='md:p-5 lg:p-6'>
 
-        <motion.p className='w-full mb-5 md:mb-0 md:p-3 ml-auto break-words'
+        <motion.p className='w-full mb-5 md:mb-0 p-4 md:p-3 ml-auto break-words'
                  whileInView={{
                   y:[40,0],
                   opacity:[0,1]
