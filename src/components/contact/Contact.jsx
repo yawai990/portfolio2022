@@ -34,7 +34,7 @@ const Contact = () => {
   },[resp])
 
   return (
-    <section id='contact' className="snap-always lg:snap-end w-full min-h-screen dark:text-slate-500 relative">
+    <section id='contact' className="w-full min-h-screen dark:text-slate-500 relative">
 
       <div style={{display:resp ? 'flex':'none'}}
       className={`p-2 rounded-lg bg-white drop-shadow-lg justify-center items-center absolute bottom-3 right-2.5 z-50`}>

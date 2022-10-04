@@ -28,18 +28,33 @@ export const AboutData =[
     ]}
 ];
 
-export const skillImg=[
-    {id:1,images:html},
-    {id:2,images:css},
-    {id:3,images:javascript},
-    {id:4,images:react},
-    {id:5,images:redux},
-    {id:6,images:bootstrap},
-    {id:7,images:tailwind},
-    {id:8,images:node},
-    {id:9,images:express},
-    {id:10,images:mongoDB},
-    {id:11,images:mysql},
+export const languageData =[
+    {id:1,name:'html',role:0},
+    {id:2,name:'css',role:0},
+    {id:3,name:'javascript',role:0},
+    {id:4,name:'react',role:0},
+    {id:5,name:'vue',role:0},
+    {id:6,name:'typescript',role:0},
+    {id:7,name:'elm',role:0},
+    {id:8,name:'jquery',role:0},
+    {id:9,name:'angular',role:0},
+    {id:10,name:'swift',role:0},
+    {id:11,name:'bootstrap',role:0},
+    {id:12,name:'tailwind',role:0},
+    {id:13,name:'semantic',role:0},
+    {id:14,name:'tacit',role:0},
+    {id:15,name:'bulma',role:0},
+    {id:16,name:'nodejs',role:1},
+    {id:17,name:'ruby',role:1},
+    {id:18,name:'php',role:1},
+    {id:19,name:'python',role:1},
+    {id:20,name:'c#',role:1},
+    {id:21,name:'c++',role:1},
+    {id:22,name:'java',role:1},
+    {id:23,name:'rerl',role:1},
+    {id:24,name:'rust',role:1},
+    {id:25,name:'mysql',role:2},
+    {id:26,name:'mongodb',role:2},
 ];
 
 export const skillSlogan = 'Passionate about crafting the deligtful and functional experiences and focused on writing clean and efficient code.';

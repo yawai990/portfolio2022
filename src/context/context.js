@@ -22,8 +22,29 @@ export const ContextProvider = ({children})=>{
       dispatch({type:'FETCH_PROJECTS',payload:data});
     };  
 
+    const fetchSkills = async()=>{
+      const {data}= await api.fetchSkill();
+
+      dispatch({type:"FETCH_SKILLS",payload:data.languages})
+    };
+
+    const fetchExp=async()=>{
+      const {data} = await api.fetchExp();
+
+      dispatch({type:"FETCH_EXP",payload:data.experience})
+    }
+
+    const fetchImage=async()=>{
+      const {data} = await api.fetchImg();
+
+      dispatch({type:"FETCH_IMG",payload:data.data})
+    }
+
     useEffect(()=>{
       FetchProjects()
+      fetchSkills()
+      fetchExp()
+      fetchImage()
     },[]);
 
     //get the theme color and mode from localstorage

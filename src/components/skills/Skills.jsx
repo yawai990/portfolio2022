@@ -1,20 +1,25 @@
 import React from 'react';
-import { skillImg,skillSlogan } from '../../data';
+import { skillSlogan } from '../../data';
 import {motion} from 'framer-motion';
 import Header from '../header/Header';
+//ini backend i just save the number only not image,
+import {languageData} from '../../data';
+//get the image
+import * as images from '../../assets';
+import Loading from '../Loading/Loading';
 import Para from '../header/Para';
 import { useGlobalContext } from '../../context/context';
 import './index.css';
 
 const Skills = () => {
-    const {themeColor} = useGlobalContext();
+    const {themeColor,state} = useGlobalContext();
     const text='core skills';
     const skillsArr = text.split('');
     const sloganArr = skillSlogan.split('');
     const secondArr  ='web development skills'.split('');
-    
+
   return (
-        <section id="skills" className="snap-always lg:snap-center w-full min-h-screen dark:text-slate-500">
+        <section id="skills" className="w-full min-h-screen dark:text-slate-500">
 
                     <div className="header p-2">
                 <Header textArr={skillsArr} />
@@ -44,9 +49,9 @@ const Skills = () => {
 
                     <div className='w-4/5 m-auto flex flex-wrap gap-5 p-2 justify-center'>
                         {
-                            skillImg.map(img=>(
+                            state.languages.length > 0 && state.languages.length !== undefined  ? state.languages.map(img=>(
                                 <motion.div
-                                key={img.id}
+                                key={img._id}
                                 whileInView={{
                                     opacity:[0,1],
                                     scale:[0,1]
@@ -60,10 +65,10 @@ const Skills = () => {
                                     <img id='skill_img' style={{
                                         width:'90%',
                                         height:'90%'
-                                    }} src={img.images} alt="" className='object-cover object-center duration-100' />
+                                    }} src={images[languageData.filter(i=>i.id === img.language && i.name)[0].name]} alt={img.language} className='object-cover object-center duration-100' />
                                     </div>
                                 </motion.div>
-                            ))
+                            )):<Loading />
                         }
                     </div>
 

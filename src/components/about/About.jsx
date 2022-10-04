@@ -1,32 +1,34 @@
-import React,{useState} from 'react';
+import React,{useState,useEffect} from 'react';
 import {FaQuoteLeft,FaQuoteRight} from 'react-icons/fa';
 import {BiRightArrow} from 'react-icons/bi';
 import {motion } from 'framer-motion';
 import Header from '../header/Header';
 import Para from '../header/Para';
 import { useGlobalContext } from '../../context/context';
-import { AboutData,aboutSlogan } from '../../data';
+import { aboutSlogan } from '../../data';
 import {me} from '../../assets';
 import './index.css';
 
 const About = () => {
-  const {themeColor}= useGlobalContext();
+  const {themeColor,state}= useGlobalContext();
   const [currentYear,setCurrentYear]  = useState(2018);
-  const [progressWidth,setProgressWidth] = useState(100/AboutData.length);
+  const [progressWidth,setProgressWidth] = useState(100/state.exp.length > 0 ? state.exp.length:100);
   const aboutHead = 'About Me';
   //this gonna be array
   const aboutArr = aboutHead.split('');
   const sloganArr =aboutSlogan.split('');
 
+  console.log(state.img)
+
   const setMode =(year,id)=>{
     setCurrentYear(year);
  
-    setProgressWidth(id/AboutData.length * 100)
+    setProgressWidth(id/state.exp.length * 100)
     
   }
 
   return (
-    <section id='about' className='snap-always lg:snap-start w-full p-1 min-h-screen dark:text-slate-500'>
+    <section id='about' className='w-full p-1 min-h-screen dark:text-slate-500'>
 
       <div className="header p-2">
         <Header textArr={aboutArr} />
@@ -69,13 +71,14 @@ const About = () => {
         <div className="w-full mb-5 md:mb-0 md:p-0 ml-auto mt-2">
 
                           <div className="flex gap-1 flex-wrap relative">
-                            {AboutData.map(about=>(
+                            {
+                            state.exp.length > 0 && state.exp.map((about,ind)=>(
                               <motion.div
-                              onClick={()=>setMode(about.year,about.id)}
+                              onClick={()=>setMode(about.year,ind + 1)}
                               style={{
                                 filter:currentYear !== about.year ? 'grayscale(1)':'grayscale(0)'
                               }}
-                              key={about.id} 
+                              key={about._id} 
                               className='w-full md:w-40 lg:w-44 p-2 rounded-md mb-4 cursor-pointer'
                               whileInView={{
                                 y:[100,0],
@@ -90,8 +93,9 @@ const About = () => {
             color:currentYear !== about.year ? '':'#5CB8E4'
           }} className='font-bold text-lg tracking-wider'>{about.year}</h5>
           <div>
-            {about.desc.map((exp,ind)=>(
-              <div key={ind} className='flex mt-3 justify-start items-center gap-1 bg-[#16213E]  rounded-lg text-[#ABD9FF] p-2 dark:drop-shadow-light'>
+            {
+              about.education && 
+              <div className='flex mt-3 justify-start items-center gap-1 bg-[#16213E]  rounded-lg text-[#ABD9FF] p-2 dark:drop-shadow-light'>
                 <span style={{
                   fontSize:'12px'
                 }} className='bg-blue-400 p-1 text-white rounded-lg 
@@ -102,12 +106,45 @@ const About = () => {
                   marginTop:'8px',
                   lineHeight:2,
                   padding:'3px'
-                }}>{exp}</span>
+                }} className='block break-all'>{about.education}</span>
               </div>
-            ))}
+          }
+              {
+              about.other && about.other.split(',').map((oth,ind)=>(
+                <div key={ind} className='flex mt-3 justify-start items-center gap-1 bg-[#16213E]  rounded-lg text-[#ABD9FF] p-2 dark:drop-shadow-light'>
+                <span style={{
+                  fontSize:'12px'
+                }} className='bg-blue-400 p-1 text-white rounded-lg 
+                flex justify-center items-center'
+                >  <BiRightArrow /> </span>
+                <span style={{
+                  fontSize:'12px',
+                  marginTop:'8px',
+                  lineHeight:2,
+                  padding:'3px'
+                }} className='break-all'>{oth}</span>
+              </div>
+              ))
+              }
+              {
+                about.work && <div className='flex mt-3 justify-start items-center gap-1 bg-[#16213E]  rounded-lg text-[#ABD9FF] p-2 dark:drop-shadow-light'>
+                <span style={{
+                  fontSize:'12px'
+                }} className='bg-blue-400 p-1 text-white rounded-lg 
+                flex justify-center items-center'
+                >  <BiRightArrow /> </span>
+                <span style={{
+                  fontSize:'12px',
+                  marginTop:'8px',
+                  lineHeight:2,
+                  padding:'3px'
+                }} className='break-word inline-block'>{about.work}</span>
+              </div>
+              }
+           
           </div>
-    </motion.div>
-  ))}
+            </motion.div>
+          ))}
 
                     <motion.div className="progress-container absolute bottom-0 left-0 md:w-full md:h-1 w-1 h-full bg-gray-300 dark:bg-slate-600 rounded-lg overflow-hidden"
                     whileInView={{
@@ -152,7 +189,7 @@ const About = () => {
       delay:0.8
     }}
       >
-              <img src={me} alt="" className='w-full rounded-lg duration-100' />
+              <img src={state.img ? state.img[0].img:me} alt="" className='w-full rounded-lg duration-100' />
       </motion.div>
         </div>
         </div>

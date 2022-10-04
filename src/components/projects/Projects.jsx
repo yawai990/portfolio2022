@@ -1,16 +1,13 @@
-import React,{useRef,useEffect} from 'react';
+import React,{useRef} from 'react';
 import {AiFillGithub} from 'react-icons/ai';
 import {GrFormView} from 'react-icons/gr'
 import {motion,useInView} from 'framer-motion';
 import Header from '../header/Header';
 import './index.css';
 import { useGlobalContext } from '../../context/context';
-// import { projects } from '../../data';
-
 
 const Projects = () => {
   const {themeColor,state} = useGlobalContext();
-  // const [projects,setProjects] = useState([]);
   const ref= useRef(null);  
   const proArr = 'projects'.split('');
   const secHeader = 'this is my recent projects'.split('');
@@ -32,7 +29,7 @@ const Projects = () => {
   }
 
   return (
-    <section id="projects" className="snap-always lg:snap-start w-full md:h-auto md:mb-5 dark:text-slate-500">
+    <section id="projects" className="w-full md:h-auto md:mb-5 dark:text-slate-500">
 
             <div className="p-1 mb-3">
               <Header textArr={proArr} />
@@ -41,8 +38,8 @@ const Projects = () => {
             </div>
 
           <div id='project_cards_container' className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4' ref={ref}>
-              {
-                state.projects.length > 0 ? state.projects?.map(pro=>(
+               {
+                state.projects.length > 0  ? state.projects?.map(pro=>(
                   <motion.div id='project_card_container' 
                   animate={ 
                   inView ? 'active':'init'
@@ -50,9 +47,8 @@ const Projects = () => {
                   variants={variants}
                   transition={{
                     type: "spring",
-                    stiffness: 260,
-                    damping: 50,
-                    delay:0.1*pro.id
+                    stiffness: 500,
+                    damping: 80,
                   }}
                   className="h-80 relative duration-200 overflow-hidden" 
                   key={pro._id}
@@ -88,10 +84,10 @@ const Projects = () => {
                           <button>Like</button>
                         </div>
                   </motion.div>  
-                )):<div className='h-36'>
+                )):<div className='h-36'> 
                   <h5>Loading....</h5>
-                  </div>
-              }
+                  </div> 
+               }
           </div>
     </section>
   )
