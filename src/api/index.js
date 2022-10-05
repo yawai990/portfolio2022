@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const URL = 'http://localhost:5000';
+const URL = 'https://portfoliodashboard22v2.herokuapp.com';
 
 export const fetchProjects =()=>axios.get(`${URL}/projects/all_projects`);
 export const fetchSkill =()=>axios.get(`${URL}/languages/get_languages`);
