@@ -1,5 +1,5 @@
-import React,{useEffect,useState,useRef} from 'react';
-import {Contact,Hero,Sidebar,MobileSide,About,Skills,Projects,Theme,Viber,Loading,Main} from './components';
+import React,{useState,useRef} from 'react';
+import {Sidebar,MobileSide,Theme,Viber,Loading,Main} from './components';
 import {BsCheckLg} from 'react-icons/bs';
 import {AiOutlineBars} from 'react-icons/ai';
 import { useGlobalContext } from './context/context';
