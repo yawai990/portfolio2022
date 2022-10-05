@@ -18,8 +18,6 @@ const About = () => {
   const aboutArr = aboutHead.split('');
   const sloganArr =aboutSlogan.split('');
 
-  console.log(state.img)
-
   const setMode =(year,id)=>{
     setCurrentYear(year);
  
