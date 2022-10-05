@@ -2,7 +2,8 @@ const init ={
     projects:[],
     languages:[],
     exp:[],
-    img:[]
+    img:[],
+    about:[]
 }
 
 export const reducer=(state=init,action)=>{
