@@ -13,7 +13,7 @@ import { useInView } from 'react-intersection-observer';
 const About = () => {
   const {themeColor,state,setPage}= useGlobalContext();
   const [currentYear,setCurrentYear]  = useState(2018);
-  const [progressWidth,setProgressWidth] = useState(100/state.exp.length > 0 ? state.exp.length:100);
+  const [progressWidth,setProgressWidth] = useState(100/state.exp?.length > 0 ? state.exp?.length:100);
   const aboutHead = 'About Me';
   //this gonna be array
   const aboutArr = aboutHead.split('');
