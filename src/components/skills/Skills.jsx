@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 import { skillSlogan } from '../../data';
 import {motion} from 'framer-motion';
 import Header from '../header/Header';
@@ -10,16 +10,27 @@ import Loading from '../Loading/Loading';
 import Para from '../header/Para';
 import { useGlobalContext } from '../../context/context';
 import './index.css';
+import { useInView } from 'react-intersection-observer';
 
 const Skills = () => {
-    const {themeColor,state} = useGlobalContext();
+    const {themeColor,state,setPage} = useGlobalContext();
     const text='core skills';
     const skillsArr = text.split('');
     const sloganArr = skillSlogan.split('');
     const secondArr  ='web development skills'.split('');
 
+    const {ref,inView,entry} = useInView();
+
+    useEffect(()=>{
+  
+      if(inView && entry !== undefined){
+        setPage(entry.target.id)
+      }
+  
+    },[inView,entry]);
+
   return (
-        <section id="skills" className="w-full min-h-screen dark:text-slate-500">
+        <section id="skills" ref={ref} className="w-full min-h-screen dark:text-slate-500">
 
                     <div className="header p-2">
                 <Header textArr={skillsArr} />
@@ -49,7 +60,7 @@ const Skills = () => {
 
                     <div className='w-4/5 m-auto flex flex-wrap gap-5 p-2 justify-center'>
                         {
-                            state.languages.length > 0 && state.languages.length !== undefined  ? state.languages.map(img=>(
+                            state.languages?.length > 0 && state.languages.length !== undefined  ? state.languages?.map(img=>(
                                 <motion.div
                                 key={img._id}
                                 whileInView={{

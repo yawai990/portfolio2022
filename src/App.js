@@ -9,7 +9,6 @@ import * as api from './api';
 
 const App = () => {
   const [loading,setLoading] =useState(true);
-  const ref= useRef(null);
         const {darkTheme,
                   showThemeColorContainer,
                   setShowThemeColorContainer,

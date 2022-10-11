@@ -1,19 +1,26 @@
-import React,{useRef} from 'react';
+import React,{useEffect} from 'react';
 import {AiFillGithub} from 'react-icons/ai';
 import {GrFormView} from 'react-icons/gr'
-import {motion,useInView} from 'framer-motion';
+import {motion} from 'framer-motion';
 import Header from '../header/Header';
+import { useInView } from 'react-intersection-observer';
 import './index.css';
 import { useGlobalContext } from '../../context/context';
 
 const Projects = () => {
-  const {themeColor,state} = useGlobalContext();
-  const ref= useRef(null);  
+  const {themeColor,state,setPage} = useGlobalContext();
   const proArr = 'projects'.split('');
   const secHeader = 'this is my recent projects'.split('');
+  const {ref,inView,entry} = useInView();
 
-  //return as a boolean
-  const inView = useInView(ref);
+  useEffect(()=>{
+
+    if(inView && entry !== undefined){
+      setPage(entry.target.id)
+    }
+
+  },[inView,entry]);
+
 
   const variants = {
     active:{
@@ -29,7 +36,7 @@ const Projects = () => {
   }
 
   return (
-    <section id="projects" className="w-full md:h-auto md:mb-5 dark:text-slate-500">
+    <section id="projects" ref={ref} className="w-full md:h-auto md:mb-5 dark:text-slate-500">
 
             <div className="p-1 mb-3">
               <Header textArr={proArr} />
@@ -37,9 +44,9 @@ const Projects = () => {
 
             </div>
 
-          <div id='project_cards_container' className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4' ref={ref}>
+          <div id='project_cards_container' className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4'>
                {
-                state.projects.length > 0  ? state.projects?.map(pro=>(
+                state.projects?.length > 0  ? state.projects?.map(pro=>(
                   <motion.div id='project_card_container' 
                   animate={ 
                   inView ? 'active':'init'

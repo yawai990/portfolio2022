@@ -8,15 +8,25 @@ import { useGlobalContext } from '../../context/context';
 import { aboutSlogan } from '../../data';
 import {me} from '../../assets';
 import './index.css';
+import { useInView } from 'react-intersection-observer';
 
 const About = () => {
-  const {themeColor,state}= useGlobalContext();
+  const {themeColor,state,setPage}= useGlobalContext();
   const [currentYear,setCurrentYear]  = useState(2018);
   const [progressWidth,setProgressWidth] = useState(100/state.exp.length > 0 ? state.exp.length:100);
   const aboutHead = 'About Me';
   //this gonna be array
   const aboutArr = aboutHead.split('');
   const sloganArr =aboutSlogan.split('');
+  const {ref,inView,entry} = useInView();
+
+  useEffect(()=>{
+
+    if(inView && entry !== undefined){
+      setPage(entry.target.id)
+    }
+
+  },[inView,entry]);
 
   const setMode =(year,id)=>{
     setCurrentYear(year);
@@ -26,7 +36,8 @@ const About = () => {
   }
 
   return (
-    <section id='about' className='w-full p-1 min-h-screen dark:text-slate-500'>
+    <section id='about' ref={ref}
+    className='w-full p-1 min-h-screen dark:text-slate-500'>
 
       <div className="header p-2">
         <Header textArr={aboutArr} />
@@ -70,7 +81,7 @@ const About = () => {
 
                           <div className="flex gap-1 flex-wrap relative">
                             {
-                            state.exp.length > 0 && state.exp.map((about,ind)=>(
+                            state.exp?.length > 0 && state.exp?.map((about,ind)=>(
                               <motion.div
                               onClick={()=>setMode(about.year,ind + 1)}
                               style={{

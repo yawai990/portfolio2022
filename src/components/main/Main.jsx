@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 import Contact from '../contact/Contact';
 import Hero from '../hero/Hero';
 import About from '../about/About';
@@ -8,7 +8,7 @@ import Projects from '../projects/Projects';
 const Main = () => {
 
   return (
-    <div id='main'>
+    <div>
         <Hero />
         <About />
          <Skills />

@@ -1,15 +1,25 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 import {motion} from 'framer-motion';
 import { useGlobalContext } from '../../context/context';
+import { useInView } from 'react-intersection-observer';
 import './index.css';
 
 const Hero = () => {
-    const {darkTheme,themeColor} = useGlobalContext();
+    const {darkTheme,themeColor,setPage} = useGlobalContext();
     const myName = 'yawai';
     const nameArr = myName.split('');
+    const {ref,inView,entry} = useInView();
+
+    useEffect(()=>{
+  
+      if(inView && entry !== undefined){
+        setPage(entry.target.id)
+      }
+  
+    },[inView,entry]);
 
   return (
-    <section id='home' 
+    <section id='home' ref={ref}
     className="w-full h-full flex justify-center items-center flex-col lg:flex-row min-h-screen relative dark:text-slate-500">
 
             <div className='w-10/12 m-auto min-h-screen lg:w-5/12 flex justify-center flex-col items-center p-2 md:mt-4 text-center'>

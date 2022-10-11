@@ -3,6 +3,7 @@ import {motion} from 'framer-motion';
 import Header from '../header/Header';
 import { useGlobalContext } from '../../context/context';
 import * as api from '../../api';
+import {useInView} from 'react-intersection-observer';
 
 const initState={
   name:'',
@@ -12,11 +13,20 @@ const initState={
 };
 
 const Contact = () => {
-  const {themeColor}= useGlobalContext();
+  const {themeColor,setPage}= useGlobalContext();
   const contactArr='Get In Touch'.split('');
   const interviewArr = "let's talk about an interview".split('');
   const [sendmail,setSendmail] = useState(initState);
-  const [resp,setResp] = useState('')
+  const [resp,setResp] = useState('');
+  const {ref,inView,entry} = useInView();
+
+  useEffect(()=>{
+
+    if(inView && entry !== undefined){
+      setPage(entry.target.id)
+    }
+
+  },[inView,entry]);
 
   const onhandleSubmit =async (e)=>{
     e.preventDefault();
@@ -34,7 +44,7 @@ const Contact = () => {
   },[resp])
 
   return (
-    <section id='contact' className="w-full min-h-screen dark:text-slate-500 relative">
+    <section id='contact' ref={ref} className="w-full min-h-screen dark:text-slate-500 relative">
 
       <div style={{display:resp ? 'flex':'none'}}
       className={`p-2 rounded-lg bg-white drop-shadow-lg justify-center items-center absolute bottom-3 right-2.5 z-50`}>
