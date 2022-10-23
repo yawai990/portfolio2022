@@ -40,11 +40,17 @@ export const ContextProvider = ({children})=>{
       dispatch({type:"FETCH_IMG",payload:data.data})
     }
 
+    const getContact=async()=>{
+      const {data}= await api.fetchContact();
+
+      dispatch({type:"FETCH_CONTACT",payload:data.contact})
+    }
     useEffect(()=>{
       FetchProjects()
       fetchSkills()
       fetchExp()
       fetchImage()
+      getContact()
     },[]);
 
     //get the theme color and mode from localstorage

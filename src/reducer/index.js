@@ -3,7 +3,8 @@ const init ={
     languages:[],
     exp:[],
     img:[],
-    about:[]
+    about:[],
+    contact:[]
 }
 
 export const reducer=(state=init,action)=>{
@@ -20,6 +21,9 @@ export const reducer=(state=init,action)=>{
 
         case 'FETCH_IMG':
             return {...state,img:action.payload}
+
+        case 'FETCH_CONTACT':
+                return {...state,contact:action.payload}
 
     default:
         break;

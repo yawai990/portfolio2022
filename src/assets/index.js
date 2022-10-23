@@ -12,6 +12,7 @@ export {default as tailwind} from './images/tailwind.svg';
 export {default as programmer} from './images/programmer.svg';
 export {default as logo} from './images/yawai.svg';
 export {default as me} from './images/me.jpg';
+export {default as typescript} from './images/typescript.png'
 
 //project images
 export {default as waaneiza} from './images/projects/waaneiza.png';

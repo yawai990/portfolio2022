@@ -6,12 +6,15 @@ import Header from '../header/Header';
 import { useInView } from 'react-intersection-observer';
 import './index.css';
 import { useGlobalContext } from '../../context/context';
+import Loading from '../Loading/Loading';
 
 const Projects = () => {
   const {themeColor,state,setPage} = useGlobalContext();
   const proArr = 'projects'.split('');
   const secHeader = 'this is my recent projects'.split('');
   const {ref,inView,entry} = useInView();
+
+  console.log(state)
 
   useEffect(()=>{
 
@@ -36,7 +39,7 @@ const Projects = () => {
   }
 
   return (
-    <section id="projects" ref={ref} className="w-full md:h-auto md:mb-5 dark:text-slate-500">
+    <section id="projects" ref={ref} className="w-full min-h-screen md:h-auto md:mb-5 dark:text-slate-500">
 
             <div className="p-1 mb-3">
               <Header textArr={proArr} />
@@ -91,9 +94,15 @@ const Projects = () => {
                           <button>Like</button>
                         </div>
                   </motion.div>  
-                )):<div className='h-36'> 
-                  <h5>Loading....</h5>
-                  </div> 
+                )): <div className='flex'>
+                  {
+                  [1,2,3].map(ind=>(
+                    <div className="animate-pulse flex space-x-4" key={ind}>
+                    <div className="bg-slate-200 h-80 w-72 rounded-lg"></div>
+                  </div>
+                  ))
+                }
+               </div> 
                }
           </div>
     </section>

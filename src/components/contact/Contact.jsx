@@ -4,6 +4,7 @@ import Header from '../header/Header';
 import { useGlobalContext } from '../../context/context';
 import * as api from '../../api';
 import {useInView} from 'react-intersection-observer';
+import {BsTelegram,BsGithub} from 'react-icons/bs';
 
 const initState={
   name:'',
@@ -13,7 +14,7 @@ const initState={
 };
 
 const Contact = () => {
-  const {themeColor,setPage}= useGlobalContext();
+  const {themeColor,state,setPage}= useGlobalContext();
   const contactArr='Get In Touch'.split('');
   const interviewArr = "let's talk about an interview".split('');
   const [sendmail,setSendmail] = useState(initState);
@@ -46,6 +47,7 @@ const Contact = () => {
   return (
     <section id='contact' ref={ref} className="w-full min-h-screen dark:text-slate-500 relative">
 
+
       <div style={{display:resp ? 'flex':'none'}}
       className={`p-2 rounded-lg bg-white drop-shadow-lg justify-center items-center absolute bottom-3 right-2.5 z-50`}>
         <p>{resp}</p>
@@ -61,12 +63,13 @@ const Contact = () => {
               <p className='text-md px-1 sm:text-lg text-center'>Give Me a heads up if you're interested for an interview</p>
             </div>
 
-            <div className='mt-5'>
+
+
             
             <Header textArr={contactArr} size='2xl' align='center' />
             <Header textArr={interviewArr} size='md' align='center' marginY3X={true} />
 
-              <form action="" className='p-4 pb-5' onSubmit={onhandleSubmit}>
+              <form action="" className='p-4' onSubmit={onhandleSubmit}>
 
                       <div className="gird grid-cols-3 md:flex gap-3">
                             
@@ -137,7 +140,19 @@ const Contact = () => {
                     }}}
                     >Send A Message</motion.button>
               </form>
-            </div>
+
+              <div className='flex justify-start items-center py-2 gap-2'>
+
+                  <a style={{color:themeColor}} href='https://t.me/YawaiZZ' className='w-8 h-8 hover:bg-blue-500 rounded-full text-2xl flex justify-center items-center'>
+                    <BsTelegram />
+                  </a>
+
+                  <a style={{color:themeColor}} href='https://github.com/yawai990?tab=repositories' className='w-8 h-8 hover:bg-blue-500 rounded-full text-2xl flex justify-center items-center'>
+                    <BsGithub />
+                  </a>
+                  
+
+              </div>
 
     </section>
   )

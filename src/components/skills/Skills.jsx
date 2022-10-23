@@ -79,7 +79,7 @@ const Skills = () => {
                                     }} src={images[languageData.filter(i=>i.id === img.language && i.name)[0].name]} alt={img.language} className='object-cover object-center duration-100' />
                                     </div>
                                 </motion.div>
-                            )):<Loading />
+                            )):<h6>please wait.....</h6>
                         }
                     </div>
 
