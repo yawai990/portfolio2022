@@ -19,6 +19,8 @@ const Skills = () => {
     const sloganArr = skillSlogan.split('');
     const secondArr  ='web development skills'.split('');
 
+    console.log(state)
+
     const {ref,inView,entry} = useInView();
 
     useEffect(()=>{
@@ -60,8 +62,10 @@ const Skills = () => {
 
                     <div className='w-4/5 m-auto flex flex-wrap gap-5 p-2 justify-center'>
                         {
-                            state.languages?.length > 0 && state.languages.length !== undefined  ? state.languages?.map(img=>(
-                                <motion.div
+                            state.languages !== undefined &&
+                           state.languages.length > 0 ? state.languages?.map(img=>{
+                          
+                              return <motion.div
                                 key={img._id}
                                 whileInView={{
                                     opacity:[0,1],
@@ -76,10 +80,15 @@ const Skills = () => {
                                     <img id='skill_img' style={{
                                         width:'90%',
                                         height:'90%'
-                                    }} src={images[languageData.filter(i=>i.id === img.language && i.name)[0].name]} alt={img.language} className='object-cover object-center duration-100' />
+                                    }} 
+                                    src={images[languageData.filter(i=>i.id === img.language && i.name).length > 0 && languageData.filter(i=>i.id === img.language && i.name)[0].name]} 
+                                    // src={images.javascript} 
+                                    alt={img.language} 
+                                    className='object-cover object-cover duration-100' />
+
                                     </div>
                                 </motion.div>
-                            )):<h6>please wait.....</h6>
+                        }):<h6>please wait.....</h6>
                         }
                     </div>
 

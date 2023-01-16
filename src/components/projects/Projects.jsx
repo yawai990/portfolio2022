@@ -14,7 +14,6 @@ const Projects = () => {
   const secHeader = 'this is my recent projects'.split('');
   const {ref,inView,entry} = useInView();
 
-  console.log(state)
 
   useEffect(()=>{
 

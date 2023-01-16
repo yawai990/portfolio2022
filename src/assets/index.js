@@ -13,6 +13,7 @@ export {default as programmer} from './images/programmer.svg';
 export {default as logo} from './images/yawai.svg';
 export {default as me} from './images/me.jpg';
 export {default as typescript} from './images/typescript.png'
+export { default as sass } from './images/Sass.png';
 
 //project images
 export {default as waaneiza} from './images/projects/waaneiza.png';

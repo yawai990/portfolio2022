@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-const URL = 'https://portfoliodashboard22v2.herokuapp.com';
+// const URL = 'https://portfoliodashboard22v2.herokuapp.com';
+const URL = 'https://portfoliodashboard.onrender.com';
 
 // https://portfoliodashboard22v2.herokuapp.com/projects/all_projects
 export const fetchProjects =()=>axios.get(`${URL}/projects/all_projects`,{
