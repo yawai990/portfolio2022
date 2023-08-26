@@ -97,22 +97,18 @@ const Hero = () => {
                 }} className='p-2 rounded text-white my-5 md:my-0 md:mt-2 hover:bg-blue-800'>Contact Me</a>
             </motion.div>
 
-            <motion.div className='hidden md:block md:w-4/5 lg:w-9/12 lg:h-screen'
-                whileInView={{
+            <div className='hidden md:block md:w-4/5 lg:w-9/12 lg:h-screen'>
+                <motion.div whileInView={{
                     scale: [0, 1],
-                    x: [100, 0],
-                    opacity: [0, 1],
                     transition: {
-                        duration: 1.5
+                        duration: 0.6
                     }
-                }}
-            >
-                <div className='w-full flex justify-center items-center absolute'>
+                }} className='w-full flex justify-center items-center absolute'>
                     <Lottie animationData={earth} className="scale-125" />
-                </div>
-            </motion.div>
+                </motion.div>
+            </div>
 
-        </section>
+        </section >
     )
 }
 
