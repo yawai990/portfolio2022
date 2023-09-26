@@ -6,11 +6,16 @@
     box-sizing: border-box;
 }
 
+.vertical-timeline-element-date {
+    color: black;
+}
+
 #about_img {
     height: 24rem;
     position: relative;
     filter: grayscale(1);
 }
+
 #about_img[data-theme-color='#F76E11'] {
     border: 2px solid #F76E11;
 }
