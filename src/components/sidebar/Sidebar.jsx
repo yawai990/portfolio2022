@@ -2,9 +2,11 @@ import React from 'react';
 import { NavLinks } from '../../data';
 import { motion } from 'framer-motion';
 import { useGlobalContext } from '../../context/context';
+import cn from 'classnames';
+import { FaChevronLeft, FaChevronRight } from 'react-icons/fa'
 
 
-const Sidebar = () => {
+const Sidebar = ({ miniSidebar, setMiniSideBar }) => {
   const { currentPage, setPage, themeColor } = useGlobalContext();
 
   const icon = {
@@ -20,12 +22,17 @@ const Sidebar = () => {
     }
   }
 
+  const SideBarStyle = cn("hidden md:block duration-150 h-screen dark:bg-dark-bg dark:text-white dark:drop-shadow-light bg-[#f5f5f5] relative", {
+    "md:w-1/12 lg:w-2/12": !miniSidebar,
+    "md:w-3/12 lg:w-[80px]": miniSidebar
+  })
+
   return (
 
-    <div className="hidden md:block md:w-3/12 lg:w-2/12 h-screen dark:bg-dark-bg dark:text-white dark:drop-shadow-light bg-[#f5f5f5] relative">
+    <div className={SideBarStyle}>
 
-      <div className='flex-1'>
-        <a href="#home" className='flex justify-start items-center p-2'>
+      <div className='flex justify-center items-center px-3 py-2'>
+        <a href="#home" className={`flex flex-1 justify-start items-center p-2 ${miniSidebar && 'hidden'}`}>
           <svg width="100" height="45" viewBox="0 0 111 65" fill="" xmlns="http://www.w3.org/2000/svg">
             <mask id="path-1-outside-1_104_6" maskUnits="userSpaceOnUse" x="0" y="0" width="111" height="65" fill="">
               <rect fill="white" width="111" height="65" />
@@ -93,16 +100,23 @@ const Sidebar = () => {
               animate="visible" d="M106.196 7.47153C105.715 7.47153 105.313 7.21163 104.992 6.69183C104.704 6.12005 104.559 5.44431 104.559 4.6646C104.559 3.67698 104.8 2.81931 105.281 2.09158C105.763 1.36386 106.293 1 106.87 1C107.384 1 107.801 1.2599 108.122 1.7797C108.443 2.29951 108.604 2.92327 108.604 3.65099C108.604 4.63861 108.363 5.52227 107.881 6.30198C107.4 7.08168 106.838 7.47153 106.196 7.47153ZM102.296 39.1275C101.108 39.1275 100.274 38.5817 99.7924 37.4901C99.3109 36.3465 99.0701 35.047 99.0701 33.5916C99.0701 32.8119 99.1183 32.0322 99.2146 31.2525C99.343 30.4208 99.4874 29.6671 99.6479 28.9913L102.874 15.6584C102.97 15.2426 103.018 14.8787 103.018 14.5668C103.018 14.047 102.938 13.6052 102.778 13.2413C102.617 12.8255 102.505 12.5396 102.441 12.3837L105.089 12.2277C105.57 12.1757 105.907 12.2797 106.1 12.5396C106.325 12.7475 106.437 13.0074 106.437 13.3193C106.437 13.6312 106.325 14.203 106.1 15.0347L102.104 30.2389C102.104 30.2389 102.007 30.5767 101.815 31.2525C101.654 31.8762 101.558 32.2921 101.526 32.5C101.429 33.2797 101.365 33.7735 101.333 33.9814C101.301 34.1894 101.285 34.3193 101.285 34.3713C101.285 34.4233 101.285 34.6312 101.285 34.9951C101.285 35.6708 101.381 36.2426 101.574 36.7104C101.799 37.1782 102.168 37.4121 102.681 37.4121C103.002 37.4121 103.371 37.2562 103.789 36.9443C104.206 36.6324 104.511 36.3205 104.704 36.0087C105.506 34.6572 106.293 32.8898 107.063 30.7067C107.865 28.4715 108.604 26.2624 109.278 24.0792C109.406 23.5594 109.567 23.2995 109.759 23.2995C109.92 23.2995 110 23.4814 110 23.8453C110 24.0532 109.952 24.3651 109.856 24.7809C109.535 25.8725 109.133 27.224 108.652 28.8354C108.17 30.4468 107.593 32.0582 106.918 33.6696C106.276 35.229 105.57 36.5285 104.8 37.5681C104.029 38.6077 103.195 39.1275 102.296 39.1275Z" stroke="#302F2F" strokeWidth="2" mask="url(#path-1-outside-1_104_6)" />
           </svg>
         </a>
+
+        <button onClick={() => setMiniSideBar(!miniSidebar)} className='bg-white drop-shadow-lg hover:drop-shadow-2xl rounded-full w-10 h-10 flex justify-center items-center'>
+          {
+            miniSidebar ? <FaChevronRight color={themeColor} className='w-[60%] h-[60%]' /> :
+              <FaChevronLeft color={themeColor} className='w-[60%] h-[60%]' />
+          }
+        </button>
       </div>
 
-      <div className="w-full flex flex-col justify-center items-start p-3">
+      <div className="w-full flex flex-col justify-center items-start p-3 overflow-x-hidden">
         {NavLinks?.map(link => (
           <motion.div
             key={link.id}
             style={{
               backgroundColor: currentPage === link.name ? themeColor : ''
             }}
-            className='w-full my-2 text-lg capitalize tracking-wider hover:text-text-primary hover:bg-gray-200 hover:drop-shadow-md rounded-lg'
+            className='w-full my-2 text-lg capitalize tracking-wider hover:text-text-primary hover:bg-gray-200 hover:drop-shadow-md rounded-lg flex items-center px-2'
             animate={{
               x: [-40, 0],
               opacity: [0, 1]
@@ -113,23 +127,27 @@ const Sidebar = () => {
               duration: 0.5
             }}
           >
+
             <a href={`#${link.name}`}
               style={{
                 color: currentPage === link.name ? 'white' : ''
               }}
-              className='w-full h-full rounded-lg drop-shadow-xl block duration-300 px-5 py-2 text-black dark:text-white'
+              className='w-full h-full rounded-lg drop-shadow-xl duration-300 px-5 py-2 text-black dark:text-white flex items-center justify-center gap-3'
               onClick={() => setPage(link.name)}
             >
-              {link.name}
+              <span className='text-2xl'>{link.icon}</span>
+              <span className={`${miniSidebar && 'hidden'} flex-1`}>
+                {link.name}
+              </span>
             </a>
           </motion.div>
         ))}
       </div>
 
 
-      <footer className='w-full absolute bottom-0 text-center bg-[#182747] py-2 text-white'>
+      <footer className='w-full absolute bottom-0 text-center bg-[#182747] py-2 text-white duration-150'>
         <p style={{
-          fontSize: '14px'
+          fontSize: miniSidebar ? "10px" : "14px"
         }}>
           <small>Designed by Yawai</small>
         </p>

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import Lottie from 'lottie-react'
 import { useGlobalContext } from '../../context/context';
@@ -6,6 +6,7 @@ import { useInView } from 'react-intersection-observer';
 import earth from '../../assets/earthrotate.json';
 import './index.css';
 import Animation from '../../Animation';
+import cn from 'classnames';
 
 const Hero = () => {
     const { darkTheme, themeColor, setPage } = useGlobalContext();
@@ -29,6 +30,7 @@ const Hero = () => {
             rotate: [45, -25, 45, -25, 45, -25, 0]
         }
     };
+
 
     const nameVariants = {
         hidden: { y: 40, opacity: 0 },
@@ -81,9 +83,15 @@ const Hero = () => {
                             </strong>
                         </motion.div>
                     </h1>
-                    <motion.p variants={nameVariants} className='my-3 dark:text-slate-400 text-2xl'>Full Stack Web Developer</motion.p>
 
-                    <motion.p variants={nameVariants} className='dark:text-slate-400 lg:w-full text-justify p-2'>
+
+
+                    <motion.p variants={nameVariants} className='my-3 relative dark:text-slate-400 text-2xl'>
+                        Full Stack Web Developer
+
+                    </motion.p>
+
+                    <motion.p variants={nameVariants} className='dark:text-slate-400 lg:w-full text-center whitespace-nowrap p-2'>
                         passionate about creating interactive applications.
                     </motion.p>
 

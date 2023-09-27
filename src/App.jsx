@@ -4,15 +4,17 @@ import { BsCheckLg } from 'react-icons/bs';
 import { AiOutlineBars } from 'react-icons/ai';
 import { useGlobalContext } from './context/context';
 import { ThemeColor } from './data';
+import cn from 'classnames'
 
 
 const App = () => {
   const [loading, setLoading] = useState(true);
+  const [miniSidebar, setMiniSideBar] = useState(true);
   const { darkTheme,
     showThemeColorContainer,
     setShowThemeColorContainer,
     themeColor, setThemeColor,
-    setSideActive, FetchProjects
+    setSideActive
   } = useGlobalContext();
 
   const setMode = (color, px) => {
@@ -23,7 +25,11 @@ const App = () => {
 
   setTimeout(() => {
     setLoading(false)
-  }, 2000);
+  }, 1000);
+
+  const mainPageStyle = cn('w-full overflow-scroll overflow-x-hidden scroll-smooth snap-y snap-mandatory duration-100 relative', {
+    " md:w-10/12": !miniSidebar,
+  })
 
   if (loading) {
     return <Loading />
@@ -34,10 +40,10 @@ const App = () => {
       <div className="w-screen h-screen flex scroll-smooth dark:bg-dark-bg relative overflow-hidden">
 
         {/* side bar */}
-        <Sidebar />
+        <Sidebar miniSidebar={miniSidebar} setMiniSideBar={setMiniSideBar} />
         <MobileSide />
 
-        <div className='w-12/12 md:w-10/12 max-h-screen overflow-scroll overflow-x-hidden scroll-smooth snap-y snap-mandatory duration-100 relative'>
+        <div className={mainPageStyle}>
 
           {/* viber message icon */}
           <div className='fixed bottom-5 right-10 z-40'>

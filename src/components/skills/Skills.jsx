@@ -82,7 +82,7 @@ const Skills = () => {
                                                     src={images[languageData.filter(i => i.id === img.language && i.name).length > 0 && languageData.filter(i => i.id === img.language && i.name)[0].name]}
                                                     // src={images.javascript} 
                                                     alt={img.language}
-                                                    className='object-cover object-cover duration-100' />
+                                                    className='object-cover duration-100' />
 
                                             </div>
                                         </motion.div>
